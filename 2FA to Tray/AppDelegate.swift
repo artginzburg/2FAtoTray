@@ -125,6 +125,10 @@ class OTP {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
       textfield.becomeFirstResponder()
     }
+    
+    if !self.secret.isEmpty {
+      textfield.stringValue = self.secret
+    }
 
     let response = alert.runModal()
     
@@ -153,5 +157,17 @@ class OTP {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-  
+  func applicationShouldHandleReopen(_ sender: NSApplication,
+                                     hasVisibleWindows flag: Bool) -> Bool
+  {
+    otp.copy()
+    if let button = statusItem.button {
+      button.highlight(true)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        button.highlight(false)
+      }
+    }
+    print("handled reopen")
+    return true
+  }
 }

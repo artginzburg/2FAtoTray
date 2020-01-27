@@ -8,7 +8,11 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject {
+let otp = OTP()
+
+let statusItem = NSStatusBar.system.statusItem(withLength: 22)
+
+class StatusMenuController: NSObject, NSMenuDelegate {
   
   func resize(image: NSImage, w: Int, h: Int) -> NSImage {
     let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
@@ -23,13 +27,9 @@ class StatusMenuController: NSObject {
   @IBOutlet weak var statusMenu: NSMenu!
   
   @IBAction func changeSecret(_ sender: Any) {
-    self.otp.showAlert()
+    otp.showAlert()
   }
-  
-  let statusItem = NSStatusBar.system.statusItem(withLength: 22)
-  
-  let otp = OTP()
-  
+
   class mouseHandlerView: NSView {
     
     var onLeftMouseDown: (()->())? = nil
@@ -54,9 +54,10 @@ class StatusMenuController: NSObject {
   
   override func awakeFromNib() {
     statusItem.menu = statusMenu
+    statusMenu.delegate = self
     statusItem.isVisible = true
     if let button = statusItem.button {
-      let statusIcon = resize(image: NSImage(named: "StatusIcon")!, w: 20, h: 20)
+      let statusIcon = resize(image: NSImage(named: "StatusIcon")!, w: 22, h: 22)
       statusIcon.isTemplate = true
       button.image = statusIcon
       button.target = self
@@ -80,13 +81,13 @@ class StatusMenuController: NSObject {
 
       mouseView.onLeftMouseDown = {
         button.highlight(true)
-        self.otp.copy()
+        otp.copy()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
           button.highlight(false)
         }
         if (NSApp.currentEvent?.clickCount == 2) {
           print("Doubleclick")
-          self.otp.showAlert()
+          otp.showAlert()
         }
       }
 
@@ -98,7 +99,16 @@ class StatusMenuController: NSObject {
     }
   }
   
+  @IBOutlet weak var tokenDisplay: NSMenuItem!
+  @IBAction func tokenDisplayClicked(_ sender: NSMenuItem) {
+    otp.copy()
+  }
+  
   func menuNeedsUpdate(_ menu: NSMenu) {
-    
+    if !otp.token.isEmpty {
+      tokenDisplay.title = otp.token
+    }
+    tokenDisplay.isHidden = otp.token.isEmpty
+    tokenDisplay.isEnabled = !otp.token.isEmpty
   }
 }

@@ -16,17 +16,23 @@
         <customObject id="dok-4Z-Dc3" customClass="StatusMenuController" customModule="_FA_to_Tray" customModuleProvider="target">
             <connections>
                 <outlet property="statusMenu" destination="Xfq-v7-Hh9" id="IVL-Qf-J99"/>
+                <outlet property="tokenDisplay" destination="zOQ-XV-e7G" id="1d5-EH-Qe4"/>
             </connections>
         </customObject>
-        <menu id="Xfq-v7-Hh9">
+        <menu showsStateColumn="NO" id="Xfq-v7-Hh9">
             <items>
-                <menuItem title="Change secret" id="UPw-mj-LC4">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="Token" hidden="YES" enabled="NO" keyEquivalent="c" indentationLevel="1" id="zOQ-XV-e7G">
+                    <connections>
+                        <action selector="tokenDisplayClicked:" target="dok-4Z-Dc3" id="Ccq-RI-Ctx"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="4gT-no-BVk"/>
+                <menuItem title="Change secret..." keyEquivalent="," indentationLevel="1" id="UPw-mj-LC4">
                     <connections>
                         <action selector="changeSecret:" target="dok-4Z-Dc3" id="Heu-pl-tvM"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" id="YdM-ld-HSz" userLabel="Quit">
+                <menuItem title="Quit" keyEquivalent="q" indentationLevel="1" id="YdM-ld-HSz" userLabel="Quit">
                     <connections>
                         <action selector="terminate:" target="-1" id="gjK-Ut-vGN"/>
                     </connections>
