@@ -14,7 +14,7 @@
 ### Via :beer: [Homebrew Cask](//brew.sh)
 
 ```powershell
-brew cask install dafuqtor/tap/2FAtoTray
+brew cask install dafuqtor/tap/2fatotray
 ```
 
 #### Direct Download · **[Latest Release](//github.com/DaFuqtor/2FAtoTray/releases/latest/download/2FAtoTray.zip) ([![GitHub release](https://img.shields.io/github/release/dafuqtor/2fatotray?label=%20&color=gray)](//github.com/DaFuqtor/2FAtoTray/releases))**
@@ -29,7 +29,6 @@ brew cask install dafuqtor/tap/2FAtoTray
 ## Settings (in menu)
 
 1. Change generator seed
-
 
 <br>
 
