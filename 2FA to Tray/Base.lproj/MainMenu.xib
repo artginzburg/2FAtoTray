@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="_FA_to_Tray" customModuleProvider="target"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="dok-4Z-Dc3" customClass="StatusMenuController" customModule="_FA_to_Tray" customModuleProvider="target">
+            <connections>
+                <outlet property="statusMenu" destination="Xfq-v7-Hh9" id="IVL-Qf-J99"/>
+            </connections>
+        </customObject>
+        <menu id="Xfq-v7-Hh9">
+            <items>
+                <menuItem title="Change secret" id="UPw-mj-LC4">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="changeSecret:" target="dok-4Z-Dc3" id="Heu-pl-tvM"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" keyEquivalent="q" id="YdM-ld-HSz" userLabel="Quit">
+                    <connections>
+                        <action selector="terminate:" target="-1" id="gjK-Ut-vGN"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="139" y="-98"/>
+        </menu>
+    </objects>
+</document>
