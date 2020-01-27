@@ -8,6 +8,9 @@
 
 import Cocoa
 import JavaScriptCore
+import KeychainAccess
+
+let keychain = Keychain(service: "com.dafuqtor.2FAtoTray")
 
 extension String {
   
@@ -126,8 +129,9 @@ class OTP {
       textfield.becomeFirstResponder()
     }
     
-    if !self.secret.isEmpty {
-      textfield.stringValue = self.secret
+    let theSecret = keychain["secret"]
+    if !theSecret!.isEmpty {
+      textfield.stringValue = theSecret!
     }
 
     let response = alert.runModal()
@@ -136,8 +140,16 @@ class OTP {
       let value = textfield.stringValue
       if !value.isEmpty {
         let secret = value.condenseWhitespace()
-        print(secret)
-        UserDefaults.standard.set(secret, forKey: "secret")
+        
+        do {
+            try keychain
+                .synchronizable(true)
+                .accessibility(.afterFirstUnlock)
+                .set(secret, key: "secret")
+        } catch let error {
+            print("error: \(error)")
+        }
+        
         self.button?.appearsDisabled = false
         self.secret = secret
       } else {
@@ -145,7 +157,11 @@ class OTP {
       }
     } else if response == .alertThirdButtonReturn {
       print("Delete secret")
-      UserDefaults.standard.removeObject(forKey: "secret")
+      do {
+          try keychain.remove("secret")
+      } catch let error {
+          print("error: \(error)")
+      }
       self.secret = ""
       self.token = ""
       self.button?.toolTip = ""

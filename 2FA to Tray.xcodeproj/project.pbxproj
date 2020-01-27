@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		3148B57B23DE260F0075A192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57A23DE260F0075A192 /* Assets.xcassets */; };
 		3148B57E23DE260F0075A192 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57C23DE260F0075A192 /* MainMenu.xib */; };
 		3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B58623DE2A700075A192 /* StatusMenuController.swift */; };
+		3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3152B18623DF762300B8FA7E /* KeychainAccess */; };
 		31E0DC8A23DE374900AC1230 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */; };
 		31E0DC8B23DE374900AC1230 /* totp.js in Resources */ = {isa = PBXBuildFile; fileRef = 31E0DC8923DE374900AC1230 /* totp.js */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +87,9 @@
 			dependencies = (
 			);
 			name = "2FA to Tray";
+			packageProductDependencies = (
+				3152B18623DF762300B8FA7E /* KeychainAccess */,
+			);
 			productName = "2FA to Tray";
 			productReference = 3148B57523DE260D0075A192 /* 2FA to Tray.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +118,9 @@
 				Base,
 			);
 			mainGroup = 3148B56C23DE260D0075A192;
+			packageReferences = (
+				3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
 			productRefGroup = 3148B57623DE260D0075A192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -278,15 +286,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "2FA to Tray/2FAtoTray.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = R2294BC6J8;
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -298,15 +308,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "2FA to Tray/2FAtoTray.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = R2294BC6J8;
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -335,6 +347,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3152B18623DF762300B8FA7E /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3148B56D23DE260D0075A192 /* Project object */;
 }

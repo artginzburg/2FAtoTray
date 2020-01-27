@@ -53,6 +53,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   }
   
   override func awakeFromNib() {
+    UserDefaults.standard.removeObject(forKey: "secret")
     statusItem.menu = statusMenu
     statusMenu.delegate = self
     statusItem.isVisible = true
@@ -63,7 +64,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       button.target = self
       otp.button = button
       
-      let secret = UserDefaults.standard.string(forKey: "secret")?.condenseWhitespace() ?? ""
+      let secret = keychain["secret"]?.condenseWhitespace() ?? ""
       if secret.isEmpty {
         button.appearsDisabled = true
         otp.showAlert()
