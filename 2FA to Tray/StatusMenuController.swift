@@ -7,10 +7,20 @@
 //
 
 import Cocoa
+import HotKey
 
 let otp = OTP()
 
 let statusItem = NSStatusBar.system.statusItem(withLength: 22)
+
+private extension HotKey {
+    func handleKeyDown(_ handler: @escaping (() -> Void)) {
+        keyDownHandler = {
+            handler()
+            self.handleKeyDown(handler)
+        }
+    }
+}
 
 class StatusMenuController: NSObject, NSMenuDelegate {
   
@@ -97,6 +107,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       }
 
       button.addSubview(mouseView)
+      
+      let hotKey = HotKey(key: .g, modifiers: [.command, .option])
+      hotKey.handleKeyDown {
+        otp.copy()
+      }
     }
   }
   
