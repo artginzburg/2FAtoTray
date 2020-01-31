@@ -15,6 +15,10 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="dok-4Z-Dc3" customClass="StatusMenuController" customModule="_FA_to_Tray" customModuleProvider="target">
             <connections>
+                <outlet property="hotkeyButton" destination="DFi-8B-prS" id="6H7-gH-9hm"/>
+                <outlet property="pasteOnClickButton" destination="6CR-IJ-zXp" id="Rtt-mm-SeB"/>
+                <outlet property="pasteOnDoubleClickButton" destination="2iy-PT-cH5" id="qMa-Di-2sF"/>
+                <outlet property="permissionsButton" destination="045-Ih-Tf7" id="7A2-sI-Q01"/>
                 <outlet property="statusMenu" destination="Xfq-v7-Hh9" id="IVL-Qf-J99"/>
                 <outlet property="tokenDisplay" destination="zOQ-XV-e7G" id="1d5-EH-Qe4"/>
             </connections>
@@ -26,7 +30,45 @@
                         <action selector="tokenDisplayClicked:" target="dok-4Z-Dc3" id="Ccq-RI-Ctx"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Paste Token" hidden="YES" keyEquivalent="v" allowsKeyEquivalentWhenHidden="YES" id="zFw-k9-rav">
+                    <connections>
+                        <action selector="pasteTokenClicked:" target="dok-4Z-Dc3" id="C0k-86-o0p"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="4gT-no-BVk"/>
+                <menuItem title="Auto-paste on" indentationLevel="1" id="lYJ-t7-4RJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Auto-paste on" autoenablesItems="NO" id="teo-zT-IQW">
+                        <items>
+                            <menuItem title="Needs accessibility permissions" hidden="YES" id="045-Ih-Tf7">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="permissionsButtonClicked:" target="dok-4Z-Dc3" id="jGb-rU-oeN"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="uXg-bK-Xyf"/>
+                            <menuItem title="HotKey" id="DFi-8B-prS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="hotkeyButtonClicked:" target="dok-4Z-Dc3" id="L0q-hK-bY2"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="FwP-OC-XBi"/>
+                            <menuItem title="Click" id="6CR-IJ-zXp">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="pasteOnClickButtonClicked:" target="dok-4Z-Dc3" id="kHj-o3-iDZ"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Double click" id="2iy-PT-cH5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="pasteOnDoubleClickButtonClicked:" target="dok-4Z-Dc3" id="SfW-y4-52C"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Change secret..." keyEquivalent="," indentationLevel="1" id="UPw-mj-LC4">
                     <connections>
                         <action selector="changeSecret:" target="dok-4Z-Dc3" id="Heu-pl-tvM"/>

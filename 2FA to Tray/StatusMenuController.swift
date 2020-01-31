@@ -7,12 +7,8 @@
 //
 
 import Cocoa
+
 import HotKey
-
-let otp = OTP()
-
-let statusItem = NSStatusBar.system.statusItem(withLength: 22)
-
 private extension HotKey {
     func handleKeyDown(_ handler: @escaping (() -> Void)) {
         keyDownHandler = {
@@ -21,6 +17,8 @@ private extension HotKey {
         }
     }
 }
+
+let statusItem = NSStatusBar.system.statusItem(withLength: 22)
 
 class StatusMenuController: NSObject, NSMenuDelegate {
   
@@ -93,12 +91,19 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       mouseView.onLeftMouseDown = {
         button.highlight(true)
         otp.copy()
+        if defaults.bool(forKey: "pasteOnClick") {
+          clipboard.paste()
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
           button.highlight(false)
         }
         if (NSApp.currentEvent?.clickCount == 2) {
-          print("Doubleclick")
-          otp.showAlert()
+//          print("Doubleclick")
+          if defaults.bool(forKey: "pasteOnDoubleClick") && AXIsProcessTrusted() {
+            clipboard.paste()
+          } else {
+            otp.showAlert()
+          }
         }
       }
 
@@ -111,6 +116,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       let hotKey = HotKey(key: .g, modifiers: [.command, .option])
       hotKey.handleKeyDown {
         otp.copy()
+        if defaults.bool(forKey: "pasteOnHotkey") {
+          clipboard.paste()
+        }
       }
     }
   }
@@ -119,12 +127,54 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   @IBAction func tokenDisplayClicked(_ sender: NSMenuItem) {
     otp.copy()
   }
+  @IBAction func pasteTokenClicked(_ sender: NSMenuItem) {
+    otp.copy()
+    clipboard.paste()
+  }
+  
+  @IBOutlet weak var hotkeyButton: NSMenuItem!
+  @IBAction func hotkeyButtonClicked(_ sender: NSMenuItem) {
+    defaults.toggleBool("pasteOnHotkey")
+  }
+  
+  @IBOutlet weak var pasteOnClickButton: NSMenuItem!
+  @IBAction func pasteOnClickButtonClicked(_ sender: NSMenuItem) {
+    defaults.toggleBool("pasteOnClick")
+    if defaults.bool(forKey: "pasteOnDoubleClick") {
+      defaults.toggleBool("pasteOnDoubleClick")
+    }
+  }
+  
+  @IBOutlet weak var permissionsButton: NSMenuItem!
+  @IBAction func permissionsButtonClicked(_ sender: NSMenuItem) {
+    clipboard.checkAccessibilityPermissions()
+  }
+  
+  @IBOutlet weak var pasteOnDoubleClickButton: NSMenuItem!
+  @IBAction func pasteOnDoubleClickButtonClicked(_ sender: NSMenuItem) {
+    defaults.toggleBool("pasteOnDoubleClick")
+    if defaults.bool(forKey: "pasteOnClick") {
+      defaults.toggleBool("pasteOnClick")
+    }
+  }
+  
   
   func menuNeedsUpdate(_ menu: NSMenu) {
-    if !otp.token.isEmpty {
+    let tokenExists = !otp.token.isEmpty
+    if tokenExists {
       tokenDisplay.title = otp.token
     }
-    tokenDisplay.isHidden = otp.token.isEmpty
-    tokenDisplay.isEnabled = !otp.token.isEmpty
+    tokenDisplay.isHidden = !tokenExists
+    tokenDisplay.isEnabled = tokenExists
+    
+    hotkeyButton.stateBy(defaults.bool(forKey: "pasteOnHotkey"))
+    pasteOnClickButton.stateBy(defaults.bool(forKey: "pasteOnClick"))
+    pasteOnDoubleClickButton.stateBy(defaults.bool(forKey: "pasteOnDoubleClick"))
+    
+    let isProcessTrusted = AXIsProcessTrusted()
+    permissionsButton.isHidden = isProcessTrusted
+    hotkeyButton.isEnabled = isProcessTrusted
+    pasteOnClickButton.isEnabled = isProcessTrusted
+    pasteOnDoubleClickButton.isEnabled = isProcessTrusted
   }
 }

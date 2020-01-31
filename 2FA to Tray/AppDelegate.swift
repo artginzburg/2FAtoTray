@@ -8,8 +8,24 @@
 
 import Cocoa
 import JavaScriptCore
-import KeychainAccess
 
+let defaults = UserDefaults.standard
+extension UserDefaults {
+  func toggleBool(_ forKey: String) {
+    self.set(!self.bool(forKey: forKey), forKey: forKey)
+  }
+}
+
+extension NSMenuItem {
+  func toggleState() {
+    self.state = self.state == .on ? .off : .on
+  }
+  func stateBy(_ bool: Bool) {
+    self.state = bool ? .on : .off
+  }
+}
+
+import KeychainAccess
 let keychain = Keychain(service: "com.dafuqtor.2FAtoTray")
 
 extension String {
@@ -52,6 +68,44 @@ final class EditableNSTextField: NSTextField {
     }
 }
 
+import AppKit
+import Carbon
+
+let clipboard = Clipboard()
+class Clipboard {
+  private let pasteboard = NSPasteboard.general
+  
+  func copy(_ string: String) {
+    pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
+    pasteboard.setString(string, forType: NSPasteboard.PasteboardType.string)
+  }
+  
+  func paste() {
+    checkAccessibilityPermissions()
+
+    DispatchQueue.main.async {
+      let vCode = UInt16(kVK_ANSI_V)
+      let source = CGEventSource(stateID: .combinedSessionState)
+      // Disable local keyboard events while pasting
+      source?.setLocalEventsFilterDuringSuppressionState([.permitLocalMouseEvents, .permitSystemDefinedEvents],
+                                                         state: .eventSuppressionStateSuppressionInterval)
+
+      let keyVDown = CGEvent(keyboardEventSource: source, virtualKey: vCode, keyDown: true)
+      let keyVUp = CGEvent(keyboardEventSource: source, virtualKey: vCode, keyDown: false)
+      keyVDown?.flags = .maskCommand
+      keyVUp?.flags = .maskCommand
+      keyVDown?.post(tap: .cgAnnotatedSessionEventTap)
+      keyVUp?.post(tap: .cgAnnotatedSessionEventTap)
+    }
+  }
+  
+  func checkAccessibilityPermissions() {
+    let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeRetainedValue(): true]
+    AXIsProcessTrustedWithOptions(options)
+  }
+}
+
+let otp = OTP()
 class OTP {
   
   private var fn:JSValue?
@@ -103,8 +157,7 @@ class OTP {
     if self.token.isEmpty {
       self.showAlert()
     } else {
-      NSPasteboard.general.clearContents()
-      NSPasteboard.general.setString(self.token, forType: NSPasteboard.PasteboardType.string)
+      clipboard.copy(self.token)
     }
   }
   
