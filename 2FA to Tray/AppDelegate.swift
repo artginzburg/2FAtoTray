@@ -182,9 +182,9 @@ class OTP {
       textfield.becomeFirstResponder()
     }
     
-    let theSecret = keychain["secret"]
-    if !theSecret!.isEmpty {
-      textfield.stringValue = theSecret!
+    let theSecret = keychain["secret"] ?? ""
+    if !theSecret.isEmpty {
+      textfield.stringValue = theSecret
     }
 
     let response = alert.runModal()
