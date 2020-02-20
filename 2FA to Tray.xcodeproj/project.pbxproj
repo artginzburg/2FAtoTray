@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		313F4DB523E00DC40086E836 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 313F4DB423E00DC40086E836 /* SwiftPackageProductDependency */; };
+		313F4DB523E00DC40086E836 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 313F4DB423E00DC40086E836 /* HotKey */; };
 		3148B57923DE260D0075A192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B57823DE260D0075A192 /* AppDelegate.swift */; };
 		3148B57B23DE260F0075A192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57A23DE260F0075A192 /* Assets.xcassets */; };
 		3148B57E23DE260F0075A192 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57C23DE260F0075A192 /* MainMenu.xib */; };
 		3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B58623DE2A700075A192 /* StatusMenuController.swift */; };
-		3152B18723DF762300B8FA7E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3152B18623DF762300B8FA7E /* SwiftPackageProductDependency */; };
+		3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3152B18623DF762300B8FA7E /* KeychainAccess */; };
 		31E0DC8A23DE374900AC1230 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */; };
 		31E0DC8B23DE374900AC1230 /* totp.js in Resources */ = {isa = PBXBuildFile; fileRef = 31E0DC8923DE374900AC1230 /* totp.js */; };
 		40AEECBBC8958A3FC40BD381 /* Pods_2FA_to_Tray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D368B2DE27131740CA97301 /* Pods_2FA_to_Tray.framework */; };
@@ -38,8 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313F4DB523E00DC40086E836 /* BuildFile in Frameworks */,
-				3152B18723DF762300B8FA7E /* BuildFile in Frameworks */,
+				313F4DB523E00DC40086E836 /* HotKey in Frameworks */,
+				3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */,
 				40AEECBBC8958A3FC40BD381 /* Pods_2FA_to_Tray.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,7 +94,6 @@
 				CC1B4C7E02B91F91EFFC3AB1 /* Pods-2FA to Tray.debug.xcconfig */,
 				7103E84D3F79ED69F3DD35F8 /* Pods-2FA to Tray.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -117,8 +116,8 @@
 			);
 			name = "2FA to Tray";
 			packageProductDependencies = (
-				3152B18623DF762300B8FA7E /* SwiftPackageProductDependency */,
-				313F4DB423E00DC40086E836 /* SwiftPackageProductDependency */,
+				3152B18623DF762300B8FA7E /* KeychainAccess */,
+				313F4DB423E00DC40086E836 /* HotKey */,
 			);
 			productName = "2FA to Tray";
 			productReference = 3148B57523DE260D0075A192 /* 2FA to Tray.app */;
@@ -149,8 +148,8 @@
 			);
 			mainGroup = 3148B56C23DE260D0075A192;
 			packageReferences = (
-				3152B18523DF762300B8FA7E /* RemoteSwiftPackageReference */,
-				313F4DB323E00DC40086E836 /* RemoteSwiftPackageReference */,
+				3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				313F4DB323E00DC40086E836 /* XCRemoteSwiftPackageReference "HotKey" */,
 			);
 			productRefGroup = 3148B57623DE260D0075A192 /* Products */;
 			projectDirPath = "";
@@ -369,7 +368,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = R2294BC6J8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
@@ -377,7 +376,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -394,7 +393,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = R2294BC6J8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
@@ -402,7 +401,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.4.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -434,7 +433,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		313F4DB323E00DC40086E836 /* RemoteSwiftPackageReference */ = {
+		313F4DB323E00DC40086E836 /* XCRemoteSwiftPackageReference "HotKey" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soffes/HotKey";
 			requirement = {
@@ -442,7 +441,7 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		3152B18523DF762300B8FA7E /* RemoteSwiftPackageReference */ = {
+		3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -453,14 +452,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		313F4DB423E00DC40086E836 /* SwiftPackageProductDependency */ = {
+		313F4DB423E00DC40086E836 /* HotKey */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 313F4DB323E00DC40086E836 /* RemoteSwiftPackageReference */;
+			package = 313F4DB323E00DC40086E836 /* XCRemoteSwiftPackageReference "HotKey" */;
 			productName = HotKey;
 		};
-		3152B18623DF762300B8FA7E /* SwiftPackageProductDependency */ = {
+		3152B18623DF762300B8FA7E /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3152B18523DF762300B8FA7E /* RemoteSwiftPackageReference */;
+			package = 3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */

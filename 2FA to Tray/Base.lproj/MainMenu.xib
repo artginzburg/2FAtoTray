@@ -16,6 +16,7 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="dok-4Z-Dc3" customClass="StatusMenuController" customModule="_FA_to_Tray" customModuleProvider="target">
             <connections>
+                <outlet property="enterAfterAutoPasteButton" destination="nHS-EH-W90" id="BUP-dc-N9L"/>
                 <outlet property="hotkeyButton" destination="DFi-8B-prS" id="6H7-gH-9hm"/>
                 <outlet property="launchAtLoginButton" destination="RW7-aQ-GXh" id="olQ-Rq-h4H"/>
                 <outlet property="pasteOnClickButton" destination="6CR-IJ-zXp" id="Rtt-mm-SeB"/>
@@ -96,6 +97,13 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="pasteOnDoubleClickButtonClicked:" target="dok-4Z-Dc3" id="SfW-y4-52C"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="tYn-zX-Gl6"/>
+                                        <menuItem title="Press Enter after pasting" id="nHS-EH-W90">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="enterAfterAutoPasteClicked:" target="dok-4Z-Dc3" id="4Jy-2H-RIV"/>
                                             </connections>
                                         </menuItem>
                                     </items>

@@ -62,6 +62,7 @@ func reinitializeStates(_ select: Int) {
 }
 
 import LoginServiceKit
+import Carbon
 
 class StatusMenuController: NSObject, NSMenuDelegate {
   
@@ -305,6 +306,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         otpInstances[currentlySelectedSeed].copy()
         if defaults.bool(forKey: "pasteOnClick") {
           clipboard.paste()
+          self.enterAfterAutoPaste()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
           button.highlight(false)
@@ -312,6 +314,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if (NSApp.currentEvent?.clickCount == 2) {
           if defaults.bool(forKey: "pasteOnDoubleClick") {
             clipboard.paste()
+            self.enterAfterAutoPaste()
           } else {
             self.showAlert()
           }
@@ -329,6 +332,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         otpInstances[currentlySelectedSeed].copy()
         if defaults.bool(forKey: "pasteOnHotkey") {
           clipboard.paste()
+          self.enterAfterAutoPaste()
         }
       }
     }
@@ -358,6 +362,31 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   }
   @IBAction func addNewClicked(_ sender: NSMenuItem) {
     tryToAddInstance()
+  }
+  
+  func enterAfterAutoPaste() {
+    if !defaults.bool(forKey: "enterAfterAutoPaste") {
+      return
+    }
+    if !AXIsProcessTrusted() {
+      return
+    }
+    clipboard.checkAccessibilityPermissions()
+    
+    DispatchQueue.main.async {
+      let keyCode = UInt16(kVK_Return)
+      let source = CGEventSource(stateID: .combinedSessionState)
+      // Disable local keyboard events while pasting
+      source?.setLocalEventsFilterDuringSuppressionState([.permitLocalMouseEvents, .permitSystemDefinedEvents],
+                                                         state: .eventSuppressionStateSuppressionInterval)
+      
+      let keyDown = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: true)
+      let keyUp = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: false)
+      keyDown?.flags = .maskCommand
+      keyUp?.flags = .maskCommand
+      keyDown?.post(tap: .cgAnnotatedSessionEventTap)
+      keyUp?.post(tap: .cgAnnotatedSessionEventTap)
+    }
   }
   
   @IBOutlet weak var hotkeyButton: NSMenuItem!
@@ -396,17 +425,25 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
   }
   
+  @IBOutlet weak var enterAfterAutoPasteButton: NSMenuItem!
+  @IBAction func enterAfterAutoPasteClicked(_ sender: NSMenuItem) {
+    defaults.boolToggle("enterAfterAutoPaste")
+    print("switched enterAfterAutoPaste pref")
+  }
+  
   func menuNeedsUpdate(_ menu: NSMenu) {
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
     hotkeyButton.state.by(defaults.bool(forKey: "pasteOnHotkey"))
     pasteOnClickButton.state.by(defaults.bool(forKey: "pasteOnClick"))
     pasteOnDoubleClickButton.state.by(defaults.bool(forKey: "pasteOnDoubleClick"))
+    enterAfterAutoPasteButton.state.by(defaults.bool(forKey: "enterAfterAutoPaste"))
     
     let isProcessTrusted = AXIsProcessTrusted()
     permissionsButton.isHidden = isProcessTrusted
     hotkeyButton.isEnabled = isProcessTrusted
     pasteOnClickButton.isEnabled = isProcessTrusted
     pasteOnDoubleClickButton.isEnabled = isProcessTrusted
+    enterAfterAutoPasteButton.isEnabled = isProcessTrusted
   }
 }
 
