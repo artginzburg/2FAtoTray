@@ -32,7 +32,6 @@ var currentlySelectedSeed:  Int  {
   set {
     defaults.set(newValue, forKey: "selected")
     reinitializeStates(newValue)
-    
   }
 }
 
@@ -61,6 +60,8 @@ func reinitializeStates(_ select: Int) {
   setStateForSelected(select)
   print("Newly selected instance: \(select)")
 }
+
+import LoginServiceKit
 
 class StatusMenuController: NSObject, NSMenuDelegate {
   
@@ -212,10 +213,13 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     currentlySelectedSeed = statusMenu.index(of: sender) - 1
     if !otpInstances.isEmpty {
       for instance in otpInstances {
-        instance.displayItem?.state = .off
+        if (instance.displayItem != nil) {
+          instance.displayItem?.state = .off
+        }
       }
     }
     sender.state.toggle()
+    otpInstances[currentlySelectedSeed].copy()
   }
   
   func initializeInstances() {
@@ -283,7 +287,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       button.target = self
       
       
-      
       initializeInstances()
       
       if otpInstances.isEmpty {
@@ -291,11 +294,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       }
       
       
-      
       let mouseView = mouseHandlerView(frame: button.frame)
       
       mouseView.onLeftMouseDown = {
         if otpInstances.isEmpty {
+          self.tryToAddInstance()
           return
         }
         button.highlight(true)
@@ -372,7 +375,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   
   @IBOutlet weak var permissionsButton: NSMenuItem!
   @IBAction func permissionsButtonClicked(_ sender: NSMenuItem) {
-    clipboard.checkAccessibilityPermissions()
+    let prefpaneUrl = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
+    NSWorkspace.shared.open(prefpaneUrl)
   }
   
   @IBOutlet weak var pasteOnDoubleClickButton: NSMenuItem!
@@ -383,16 +387,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
   }
   
+  @IBOutlet weak var launchAtLoginButton: NSMenuItem!
+  @IBAction func launchAtLoginClicked(_ sender: NSMenuItem) {
+    if LoginServiceKit.isExistLoginItems() {
+      LoginServiceKit.removeLoginItems()
+    } else {
+      LoginServiceKit.addLoginItems()
+    }
+  }
   
   func menuNeedsUpdate(_ menu: NSMenu) {
-    //    print(currentlySelectedSeed)
-    //    let tokenExists = !otpInstances[currentlySelectedSeed].token.isEmpty
-    //    if tokenExists {
-    //      otpInstances[currentlySelectedSeed].displayItem?.title = otpInstances[currentlySelectedSeed].token
-    //    }
-    //    otpInstances[currentlySelectedSeed].displayItem?.isHidden = !tokenExists
-    //    otpInstances[currentlySelectedSeed].displayItem?.isEnabled = tokenExists
-    
+    launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
     hotkeyButton.state.by(defaults.bool(forKey: "pasteOnHotkey"))
     pasteOnClickButton.state.by(defaults.bool(forKey: "pasteOnClick"))
     pasteOnDoubleClickButton.state.by(defaults.bool(forKey: "pasteOnDoubleClick"))
@@ -437,23 +442,6 @@ extension Stringifiable {
 
 extension Dictionary: Stringifiable {}
 extension Array: Stringifiable {}
-
-//Usage:
-//do {
-// let stringified = try JSONStringify(value: ["name":"bob", "age":29]).stringify()
-//  print(stringified)
-//} catch let error { print(error) }
-//
-////Or
-//let dictionary = ["name":"bob", "age":29] as [String: Any]
-//let stringifiedDictionary = try dictionary.stringify()
-//
-//let array = ["name","bob", "age",29] as [Any]
-//let stringifiedArray = try array.stringify()
-//
-//print(stringifiedDictionary)
-//print(stringifiedArray)
-
 
 extension String
 {

@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		313F4DB523E00DC40086E836 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 313F4DB423E00DC40086E836 /* HotKey */; };
+		313F4DB523E00DC40086E836 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 313F4DB423E00DC40086E836 /* SwiftPackageProductDependency */; };
 		3148B57923DE260D0075A192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B57823DE260D0075A192 /* AppDelegate.swift */; };
 		3148B57B23DE260F0075A192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57A23DE260F0075A192 /* Assets.xcassets */; };
 		3148B57E23DE260F0075A192 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57C23DE260F0075A192 /* MainMenu.xib */; };
 		3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B58623DE2A700075A192 /* StatusMenuController.swift */; };
-		3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3152B18623DF762300B8FA7E /* KeychainAccess */; };
+		3152B18723DF762300B8FA7E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 3152B18623DF762300B8FA7E /* SwiftPackageProductDependency */; };
 		31E0DC8A23DE374900AC1230 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */; };
 		31E0DC8B23DE374900AC1230 /* totp.js in Resources */ = {isa = PBXBuildFile; fileRef = 31E0DC8923DE374900AC1230 /* totp.js */; };
+		40AEECBBC8958A3FC40BD381 /* Pods_2FA_to_Tray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D368B2DE27131740CA97301 /* Pods_2FA_to_Tray.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,9 @@
 		3148B58623DE2A700075A192 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		31E0DC8923DE374900AC1230 /* totp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = totp.js; sourceTree = "<group>"; };
+		7103E84D3F79ED69F3DD35F8 /* Pods-2FA to Tray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2FA to Tray.release.xcconfig"; path = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray.release.xcconfig"; sourceTree = "<group>"; };
+		9D368B2DE27131740CA97301 /* Pods_2FA_to_Tray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2FA_to_Tray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC1B4C7E02B91F91EFFC3AB1 /* Pods-2FA to Tray.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2FA to Tray.debug.xcconfig"; path = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,8 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313F4DB523E00DC40086E836 /* HotKey in Frameworks */,
-				3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */,
+				313F4DB523E00DC40086E836 /* BuildFile in Frameworks */,
+				3152B18723DF762300B8FA7E /* BuildFile in Frameworks */,
+				40AEECBBC8958A3FC40BD381 /* Pods_2FA_to_Tray.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +52,8 @@
 			children = (
 				3148B57723DE260D0075A192 /* 2FA to Tray */,
 				3148B57623DE260D0075A192 /* Products */,
+				DB75127BC31F59EE6500DF97 /* Pods */,
+				9AA3A54D865A3318572A0845 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +80,24 @@
 			path = "2FA to Tray";
 			sourceTree = "<group>";
 		};
+		9AA3A54D865A3318572A0845 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D368B2DE27131740CA97301 /* Pods_2FA_to_Tray.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB75127BC31F59EE6500DF97 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC1B4C7E02B91F91EFFC3AB1 /* Pods-2FA to Tray.debug.xcconfig */,
+				7103E84D3F79ED69F3DD35F8 /* Pods-2FA to Tray.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3148B58323DE260F0075A192 /* Build configuration list for PBXNativeTarget "2FA to Tray" */;
 			buildPhases = (
+				BC2E8896602A91781AA6FD74 /* [CP] Check Pods Manifest.lock */,
 				3148B57123DE260D0075A192 /* Sources */,
 				3148B57223DE260D0075A192 /* Frameworks */,
 				3148B57323DE260D0075A192 /* Resources */,
+				E9C050E747033A0C29AAF70A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -90,8 +117,8 @@
 			);
 			name = "2FA to Tray";
 			packageProductDependencies = (
-				3152B18623DF762300B8FA7E /* KeychainAccess */,
-				313F4DB423E00DC40086E836 /* HotKey */,
+				3152B18623DF762300B8FA7E /* SwiftPackageProductDependency */,
+				313F4DB423E00DC40086E836 /* SwiftPackageProductDependency */,
 			);
 			productName = "2FA to Tray";
 			productReference = 3148B57523DE260D0075A192 /* 2FA to Tray.app */;
@@ -122,8 +149,8 @@
 			);
 			mainGroup = 3148B56C23DE260D0075A192;
 			packageReferences = (
-				3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				313F4DB323E00DC40086E836 /* XCRemoteSwiftPackageReference "HotKey" */,
+				3152B18523DF762300B8FA7E /* RemoteSwiftPackageReference */,
+				313F4DB323E00DC40086E836 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 3148B57623DE260D0075A192 /* Products */;
 			projectDirPath = "";
@@ -146,6 +173,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BC2E8896602A91781AA6FD74 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-2FA to Tray-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9C050E747033A0C29AAF70A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3148B57123DE260D0075A192 /* Sources */ = {
@@ -293,6 +362,7 @@
 		};
 		3148B58423DE260F0075A192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC1B4C7E02B91F91EFFC3AB1 /* Pods-2FA to Tray.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "2FA to Tray/2FAtoTray.entitlements";
@@ -317,6 +387,7 @@
 		};
 		3148B58523DE260F0075A192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7103E84D3F79ED69F3DD35F8 /* Pods-2FA to Tray.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "2FA to Tray/2FAtoTray.entitlements";
@@ -363,7 +434,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		313F4DB323E00DC40086E836 /* XCRemoteSwiftPackageReference "HotKey" */ = {
+		313F4DB323E00DC40086E836 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/soffes/HotKey";
 			requirement = {
@@ -371,7 +442,7 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+		3152B18523DF762300B8FA7E /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -382,14 +453,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		313F4DB423E00DC40086E836 /* HotKey */ = {
+		313F4DB423E00DC40086E836 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 313F4DB323E00DC40086E836 /* XCRemoteSwiftPackageReference "HotKey" */;
+			package = 313F4DB323E00DC40086E836 /* RemoteSwiftPackageReference */;
 			productName = HotKey;
 		};
-		3152B18623DF762300B8FA7E /* KeychainAccess */ = {
+		3152B18623DF762300B8FA7E /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3152B18523DF762300B8FA7E /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			package = 3152B18523DF762300B8FA7E /* RemoteSwiftPackageReference */;
 			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
