@@ -10,15 +10,57 @@ import Cocoa
 
 import HotKey
 private extension HotKey {
-    func handleKeyDown(_ handler: @escaping (() -> Void)) {
-        keyDownHandler = {
-            handler()
-            self.handleKeyDown(handler)
-        }
+  func handleKeyDown(_ handler: @escaping (() -> Void)) {
+    keyDownHandler = {
+      handler()
+      self.handleKeyDown(handler)
     }
+  }
 }
 
 let statusItem = NSStatusBar.system.statusItem(withLength: 22)
+
+var currentlySelectedSeed:  Int  {
+  get {
+    let QTYofInstances = otpInstances.count
+    if defaults.integer(forKey: "selected") + 1 > QTYofInstances {
+      let newSelected = (QTYofInstances - 1 < 0) ? 0 : (QTYofInstances - 1)
+      defaults.set(newSelected, forKey: "selected")
+    }
+    return defaults.integer(forKey: "selected")
+  }
+  set {
+    defaults.set(newValue, forKey: "selected")
+    reinitializeStates(newValue)
+    
+  }
+}
+
+func turnAllStatesOff() {
+  if !otpInstances.isEmpty {
+    for instance in otpInstances {
+      if (instance.displayItem != nil) {
+        instance.displayItem?.state = .off
+      }
+    }
+    print("turned all states off")
+  }
+}
+
+func setStateForSelected(_ selected: Int) {
+  if !otpInstances.isEmpty {
+    if (otpInstances[selected].displayItem != nil) {
+      print("set selected state for: \(selected)")
+      otpInstances[selected].displayItem?.state = .on
+    }
+  }
+}
+
+func reinitializeStates(_ select: Int) {
+  turnAllStatesOff()
+  setStateForSelected(select)
+  print("Newly selected instance: \(select)")
+}
 
 class StatusMenuController: NSObject, NSMenuDelegate {
   
@@ -34,10 +76,116 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   
   @IBOutlet weak var statusMenu: NSMenu!
   
-  @IBAction func changeSecret(_ sender: Any) {
-    otp.showAlert()
+  @IBAction func changeSecret(_ sender: NSMenuItem) {
+    showAlert()
   }
-
+  
+  func showAlert() {
+    if otpInstances.isEmpty {
+      print("otpInstances is empty")
+      return
+    }
+    if (NSApplication.shared.modalWindow) != nil {
+      return
+    }
+    let currentlySelectedInstance = otpInstances[currentlySelectedSeed]
+    let alert = NSAlert()
+    alert.messageText = "Change secret seed"
+    alert.informativeText = "Enter a code which should look like this:"
+    
+    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: "Cancel")
+    alert.addButton(withTitle: "Delete secret from disk")
+    
+    let textfield = EditableNSTextField(frame: NSRect(x: 0.0, y: 0.0, width: 180.0, height: 22.0))
+    textfield.alignment = .center
+    textfield.placeholderString = "AADEM4YUY5GYZHHP"
+    alert.accessoryView = textfield
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+      textfield.becomeFirstResponder()
+    }
+    
+    let previousSecret = currentlySelectedInstance.secret
+    if !previousSecret.isEmpty {
+      textfield.stringValue = previousSecret
+    }
+    
+    let response = alert.runModal()
+    if response == .alertFirstButtonReturn {
+      print("Pressed OK")
+      let value = textfield.stringValue
+      if value.isEmpty {
+        print("Entered value is empty")
+        removeInstance(currentlySelectedInstance)
+      } else {
+        currentlySelectedInstance.secret = value.condenseWhitespace()
+      }
+    } else if response == .alertSecondButtonReturn {
+      print("Pressed Cancel")
+      if currentlySelectedInstance.secret.isEmpty {
+        removeInstance(currentlySelectedInstance)
+      }
+    } else if response == .alertThirdButtonReturn {
+      print("Pressed Delete secret")
+      currentlySelectedInstance.secret = ""
+      currentlySelectedInstance.token = ""
+      currentlySelectedInstance.button?.toolTip = ""
+      removeInstance(currentlySelectedInstance)
+    }
+    reinitializeKeychain()
+    initializeInstances()
+  }
+  
+  func removeInstance(_ instance: OTP) {
+    if (instance.displayItem != nil) {
+      statusMenu.removeItem(instance.displayItem!)
+    }
+    otpInstances.remove(at: currentlySelectedSeed)
+  }
+  
+  func reinitializeKeychain() {
+    var secrets: [String] = []
+    
+    print("QTY of instances: \(otpInstances.count)")
+    
+    if otpInstances.isEmpty {
+      print("otpInstances is Empty")
+    } else {
+      for inst in otpInstances {
+        if inst.secret.isEmpty {
+          removeInstance(inst)
+          print("removed an instance due to empty secret")
+        } else {
+          secrets.append(inst.secret)
+        }
+      }
+      print(secrets)
+    }
+    
+    do {
+      if secrets.count == 0 {
+        do {
+          try keychain.remove("secret")
+          print("removed keychain item")
+        } catch let error {
+          print("error: \(error)")
+        }
+        return
+      }
+      let stringified = try JSONStringify(value: secrets).stringify()
+      print(stringified)
+      do {
+        try keychain
+          .synchronizable(true)
+          .accessibility(.afterFirstUnlock)
+          .set(stringified, key: "secret")
+      } catch let error {
+        print("error: \(error)")
+      }
+    } catch let error { print(error) }
+  }
+  
   class mouseHandlerView: NSView {
     
     var onLeftMouseDown: (()->())? = nil
@@ -60,37 +208,98 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     
   }
   
+  @objc func tokenDisplayClicked(_ sender: NSMenuItem) {
+    currentlySelectedSeed = statusMenu.index(of: sender) - 1
+    if !otpInstances.isEmpty {
+      for instance in otpInstances {
+        instance.displayItem?.state = .off
+      }
+    }
+    sender.state.toggle()
+  }
+  
+  func initializeInstances() {
+    for instance in otpInstances {
+      if (instance.displayItem != nil) {
+        statusMenu.removeItem(instance.displayItem!)
+      }
+    }
+    otpInstances.removeAll()
+    print("Removed all instances")
+    
+    let secrets = keychain["secret"]
+    if secrets == nil {
+      print("Keychain 'secret' is empty")
+      if let button = statusItem.button {
+        button.appearsDisabled = true
+      }
+      return
+    }
+    if let datan = secrets?.decodeUrl().data(using: String.Encoding.utf8) {
+      print("Initializing instances from keychain")
+      if let jsonc = datan.dataToJSON() {
+        let dataArray = (jsonc as! NSArray) as Array
+        print("Stored secrets already: \(dataArray.count)")
+        
+        var newInstIndex = 0
+        
+        for secret in dataArray {
+          print("\(secret) will be initialized")
+          let theSecret = (secret as! String).condenseWhitespace()
+          
+          let newOtpInstance = OTP()
+          newOtpInstance.secret = theSecret
+          
+          newOtpInstance.button = statusItem.button
+          
+          let newTokenDisplay = NSMenuItem()
+          statusMenu.insertItem(newTokenDisplay, at: newInstIndex + 1)
+          newTokenDisplay.isEnabled = true
+          newTokenDisplay.isHidden = false
+          newTokenDisplay.target = self
+          newTokenDisplay.action = #selector(tokenDisplayClicked(_:))
+          newOtpInstance.displayItem = newTokenDisplay
+          
+          newOtpInstance.start()
+          otpInstances.append(newOtpInstance)
+          newInstIndex += 1
+        }
+        
+      }
+    }
+    reinitializeStates(currentlySelectedSeed)
+  }
+  
   override func awakeFromNib() {
-    UserDefaults.standard.removeObject(forKey: "secret")
+    defaults.removeObject(forKey: "secret")
     statusItem.menu = statusMenu
     statusMenu.delegate = self
     statusItem.isVisible = true
+    
     if let button = statusItem.button {
       let statusIcon = resize(image: NSImage(named: "StatusIcon")!, w: 22, h: 22)
       statusIcon.isTemplate = true
       button.image = statusIcon
       button.target = self
-      otp.button = button
       
-      let secret = keychain["secret"]?.condenseWhitespace() ?? ""
-      if secret.isEmpty {
-        button.appearsDisabled = true
-        otp.showAlert()
-      } else {
-        otp.secret = secret
-      }
-      otp.start()
       
-      if UserDefaults.standard.bool(forKey: "instantMode") {
-        otp.copy()
-        NSApplication.shared.terminate(self)
+      
+      initializeInstances()
+      
+      if otpInstances.isEmpty {
+        tryToAddInstance()
       }
+      
+      
       
       let mouseView = mouseHandlerView(frame: button.frame)
-
+      
       mouseView.onLeftMouseDown = {
+        if otpInstances.isEmpty {
+          return
+        }
         button.highlight(true)
-        otp.copy()
+        otpInstances[currentlySelectedSeed].copy()
         if defaults.bool(forKey: "pasteOnClick") {
           clipboard.paste()
         }
@@ -98,24 +307,23 @@ class StatusMenuController: NSObject, NSMenuDelegate {
           button.highlight(false)
         }
         if (NSApp.currentEvent?.clickCount == 2) {
-//          print("Doubleclick")
-          if defaults.bool(forKey: "pasteOnDoubleClick") && AXIsProcessTrusted() {
+          if defaults.bool(forKey: "pasteOnDoubleClick") {
             clipboard.paste()
           } else {
-            otp.showAlert()
+            self.showAlert()
           }
         }
       }
-
+      
       mouseView.onRightMouseDown = {
         button.performClick(NSApp.currentEvent)
       }
-
+      
       button.addSubview(mouseView)
       
       let hotKey = HotKey(key: .g, modifiers: [.command, .option])
       hotKey.handleKeyDown {
-        otp.copy()
+        otpInstances[currentlySelectedSeed].copy()
         if defaults.bool(forKey: "pasteOnHotkey") {
           clipboard.paste()
         }
@@ -123,25 +331,42 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
   }
   
-  @IBOutlet weak var tokenDisplay: NSMenuItem!
-  @IBAction func tokenDisplayClicked(_ sender: NSMenuItem) {
-    otp.copy()
+  func tryToAddInstance() {
+    let newInstance = OTP()
+    newInstance.button = statusItem.button
+    newInstance.start()
+    otpInstances.append(newInstance)
+    currentlySelectedSeed = otpInstances.count - 1
+    showAlert()
+  }
+  
+  @IBAction func copyTokenClicked(_ sender: NSMenuItem) {
+    if otpInstances.isEmpty {
+      return
+    }
+    otpInstances[currentlySelectedSeed].copy()
   }
   @IBAction func pasteTokenClicked(_ sender: NSMenuItem) {
-    otp.copy()
+    if otpInstances.isEmpty {
+      return
+    }
+    otpInstances[currentlySelectedSeed].copy()
     clipboard.paste()
+  }
+  @IBAction func addNewClicked(_ sender: NSMenuItem) {
+    tryToAddInstance()
   }
   
   @IBOutlet weak var hotkeyButton: NSMenuItem!
   @IBAction func hotkeyButtonClicked(_ sender: NSMenuItem) {
-    defaults.toggleBool("pasteOnHotkey")
+    defaults.boolToggle("pasteOnHotkey")
   }
   
   @IBOutlet weak var pasteOnClickButton: NSMenuItem!
   @IBAction func pasteOnClickButtonClicked(_ sender: NSMenuItem) {
-    defaults.toggleBool("pasteOnClick")
+    defaults.boolToggle("pasteOnClick")
     if defaults.bool(forKey: "pasteOnDoubleClick") {
-      defaults.toggleBool("pasteOnDoubleClick")
+      defaults.boolToggle("pasteOnDoubleClick")
     }
   }
   
@@ -152,29 +377,100 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   
   @IBOutlet weak var pasteOnDoubleClickButton: NSMenuItem!
   @IBAction func pasteOnDoubleClickButtonClicked(_ sender: NSMenuItem) {
-    defaults.toggleBool("pasteOnDoubleClick")
+    defaults.boolToggle("pasteOnDoubleClick")
     if defaults.bool(forKey: "pasteOnClick") {
-      defaults.toggleBool("pasteOnClick")
+      defaults.boolToggle("pasteOnClick")
     }
   }
   
   
   func menuNeedsUpdate(_ menu: NSMenu) {
-    let tokenExists = !otp.token.isEmpty
-    if tokenExists {
-      tokenDisplay.title = otp.token
-    }
-    tokenDisplay.isHidden = !tokenExists
-    tokenDisplay.isEnabled = tokenExists
+    //    print(currentlySelectedSeed)
+    //    let tokenExists = !otpInstances[currentlySelectedSeed].token.isEmpty
+    //    if tokenExists {
+    //      otpInstances[currentlySelectedSeed].displayItem?.title = otpInstances[currentlySelectedSeed].token
+    //    }
+    //    otpInstances[currentlySelectedSeed].displayItem?.isHidden = !tokenExists
+    //    otpInstances[currentlySelectedSeed].displayItem?.isEnabled = tokenExists
     
-    hotkeyButton.stateBy(defaults.bool(forKey: "pasteOnHotkey"))
-    pasteOnClickButton.stateBy(defaults.bool(forKey: "pasteOnClick"))
-    pasteOnDoubleClickButton.stateBy(defaults.bool(forKey: "pasteOnDoubleClick"))
+    hotkeyButton.state.by(defaults.bool(forKey: "pasteOnHotkey"))
+    pasteOnClickButton.state.by(defaults.bool(forKey: "pasteOnClick"))
+    pasteOnDoubleClickButton.state.by(defaults.bool(forKey: "pasteOnDoubleClick"))
     
     let isProcessTrusted = AXIsProcessTrusted()
     permissionsButton.isHidden = isProcessTrusted
     hotkeyButton.isEnabled = isProcessTrusted
     pasteOnClickButton.isEnabled = isProcessTrusted
     pasteOnDoubleClickButton.isEnabled = isProcessTrusted
+  }
+}
+
+enum StringifyError: Error {
+  case isNotValidJSONObject
+}
+
+struct JSONStringify {
+  
+  let value: Any
+  
+  func stringify(prettyPrinted: Bool = false) throws -> String {
+    let options: JSONSerialization.WritingOptions = prettyPrinted ? .prettyPrinted : .init(rawValue: 0)
+    if JSONSerialization.isValidJSONObject(self.value) {
+      let data = try JSONSerialization.data(withJSONObject: self.value, options: options)
+      if let string = String(data: data, encoding: .utf8) {
+        return string
+        
+      }
+    }
+    throw StringifyError.isNotValidJSONObject
+  }
+}
+protocol Stringifiable {
+  func stringify(prettyPrinted: Bool) throws -> String
+}
+
+extension Stringifiable {
+  func stringify(prettyPrinted: Bool = false) throws -> String {
+    return try JSONStringify(value: self).stringify(prettyPrinted: prettyPrinted)
+  }
+}
+
+extension Dictionary: Stringifiable {}
+extension Array: Stringifiable {}
+
+//Usage:
+//do {
+// let stringified = try JSONStringify(value: ["name":"bob", "age":29]).stringify()
+//  print(stringified)
+//} catch let error { print(error) }
+//
+////Or
+//let dictionary = ["name":"bob", "age":29] as [String: Any]
+//let stringifiedDictionary = try dictionary.stringify()
+//
+//let array = ["name","bob", "age",29] as [Any]
+//let stringifiedArray = try array.stringify()
+//
+//print(stringifiedDictionary)
+//print(stringifiedArray)
+
+
+extension String
+{
+  func decodeUrl() -> String
+  {
+    return self.removingPercentEncoding!
+  }
+}
+
+extension Data
+{
+  func dataToJSON() -> Any? {
+    do {
+      return try JSONSerialization.jsonObject(with: self, options: [])
+    } catch let myJSONError {
+      print(myJSONError)
+    }
+    return nil
   }
 }

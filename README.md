@@ -19,8 +19,6 @@ brew cask install dafuqtor/tap/2fatotray
 
 #### Direct Download · **[Latest Release](//github.com/DaFuqtor/2FAtoTray/releases/latest/download/2FAtoTray.zip) ([![GitHub release](https://img.shields.io/github/release/dafuqtor/2fatotray?label=%20&color=gray)](//github.com/DaFuqtor/2FAtoTray/releases))**
 
-> [![Build Status](https://app.bitrise.io/app/94efe673ad3ac640/status.svg?token=TgJkjwx_27BVoz877mKocQ)](https://app.bitrise.io/app/94efe673ad3ac640)
-
 <br>
 
 <h2 align="right">:mag: Usage</h2>
@@ -30,20 +28,3 @@ brew cask install dafuqtor/tap/2fatotray
 <p align="right"><kbd>⌘</kbd><kbd>Space</kbd> &nbsp·&nbsp type <code>2fa</code> &nbsp·&nbsp hit <kbd>Enter</kbd>&nbsp·&nbsp to copy</p>
 
 <h4> All the actions are also available in menu </h4>
-
-<br>
-
-### Advanced settings
-
-<details>
-<summary>For experienced users</summary>
-
-#### Instant Mode
-
-> After launching, the program copies the code and exits (so, completely minimizing battery usage)
-
-```powershell
-defaults write com.dafuqtor.2FAtoTray instantMode 1
-```
-
-</details>

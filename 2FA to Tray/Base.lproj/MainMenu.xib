@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -20,14 +21,13 @@
                 <outlet property="pasteOnDoubleClickButton" destination="2iy-PT-cH5" id="qMa-Di-2sF"/>
                 <outlet property="permissionsButton" destination="045-Ih-Tf7" id="7A2-sI-Q01"/>
                 <outlet property="statusMenu" destination="Xfq-v7-Hh9" id="IVL-Qf-J99"/>
-                <outlet property="tokenDisplay" destination="zOQ-XV-e7G" id="1d5-EH-Qe4"/>
             </connections>
         </customObject>
-        <menu showsStateColumn="NO" id="Xfq-v7-Hh9">
+        <menu id="Xfq-v7-Hh9">
             <items>
-                <menuItem title="Token" hidden="YES" enabled="NO" keyEquivalent="c" indentationLevel="1" id="zOQ-XV-e7G">
+                <menuItem title="Copy Token" hidden="YES" keyEquivalent="c" allowsKeyEquivalentWhenHidden="YES" id="pjS-KF-kBg">
                     <connections>
-                        <action selector="tokenDisplayClicked:" target="dok-4Z-Dc3" id="Ccq-RI-Ctx"/>
+                        <action selector="copyTokenClicked:" target="dok-4Z-Dc3" id="TqR-tB-Gsg"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Paste Token" hidden="YES" keyEquivalent="v" allowsKeyEquivalentWhenHidden="YES" id="zFw-k9-rav">
@@ -35,8 +35,23 @@
                         <action selector="pasteTokenClicked:" target="dok-4Z-Dc3" id="C0k-86-o0p"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Add new..." image="NSAddTemplate" id="mOb-6m-Qx6">
+                    <attributedString key="attributedTitle">
+                        <fragment content="Add new...">
+                            <attributes>
+                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" metaFont="label" size="12"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addNewClicked:" target="dok-4Z-Dc3" id="xmQ-FJ-bgq"/>
+                    </connections>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="4gT-no-BVk"/>
-                <menuItem title="Auto-paste on" indentationLevel="1" id="lYJ-t7-4RJ">
+                <menuItem title="Auto-paste on" id="lYJ-t7-4RJ">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Auto-paste on" autoenablesItems="NO" id="teo-zT-IQW">
                         <items>
@@ -69,12 +84,12 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Change secret..." keyEquivalent="," indentationLevel="1" id="UPw-mj-LC4">
+                <menuItem title="Change secret..." keyEquivalent="," id="UPw-mj-LC4">
                     <connections>
                         <action selector="changeSecret:" target="dok-4Z-Dc3" id="Heu-pl-tvM"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" indentationLevel="1" id="YdM-ld-HSz" userLabel="Quit">
+                <menuItem title="Quit" keyEquivalent="q" id="YdM-ld-HSz" userLabel="Quit">
                     <connections>
                         <action selector="terminate:" target="-1" id="gjK-Ut-vGN"/>
                     </connections>
@@ -83,4 +98,7 @@
             <point key="canvasLocation" x="139" y="-98"/>
         </menu>
     </objects>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+    </resources>
 </document>
