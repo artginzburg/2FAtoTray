@@ -6,47 +6,87 @@
 	objectVersion = 52;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		ED77B4B88587C894E85C361023D67C53 /* Sparkle */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2C8D06A2289713323892B3638F08AC0B /* Build configuration list for PBXAggregateTarget "Sparkle" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = Sparkle;
+			productName = Sparkle;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		39901ED0E424B4AD66D94DBF5ED432A3 /* LoginServiceKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E8B9A9D2C2228A22B6BD2A7BE1F9C9 /* LoginServiceKit-dummy.m */; };
-		5C232150CA77EF06DC418A48F78C822F /* LoginServiceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2129FD663555FACAE95A24CDE13D2AE6 /* LoginServiceKit.swift */; };
-		8CF9EAF3CD133A932B3106768CD42A06 /* Pods-2FA to Tray-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C8799246FE5A4626A975D07D2E58 /* Pods-2FA to Tray-dummy.m */; };
+		35813E350294C84BE087AEF090EC0AAF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
+		39901ED0E424B4AD66D94DBF5ED432A3 /* LoginServiceKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B1049F7543CFB07E1321703D501944E4 /* LoginServiceKit-dummy.m */; };
+		5C232150CA77EF06DC418A48F78C822F /* LoginServiceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A28C13E899806BDFCE9BB7E5851A83 /* LoginServiceKit.swift */; };
+		68B2597D111A237ADB920B8AD41CFF89 /* Pods-2FA to Tray-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C6C8799246FE5A4626A975D07D2E58 /* Pods-2FA to Tray-dummy.m */; };
+		6D0C8D649FB0792AA20B444BFFED3838 /* Pods-2FA to Tray-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8E62BF9BF8347310B9A58385A4E7D7 /* Pods-2FA to Tray-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9824BFBFD96E1D47E6D3F787AE79F9A6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
-		AF24D3A7B6D05070747317DAFE0A5ECE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
-		EC651A3CEED8838B64E4F549DC9A0F33 /* Pods-2FA to Tray-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F8E62BF9BF8347310B9A58385A4E7D7 /* Pods-2FA to Tray-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD9EA8AA8D3959577C324CE51105CC90 /* LoginServiceKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FD16C3867093D1D47BBDD2E9ADC1586 /* LoginServiceKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD9EA8AA8D3959577C324CE51105CC90 /* LoginServiceKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 900055AB41F14934EBBAF80129A96B2E /* LoginServiceKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		908E69D67C04FCB898EAF2013B298C86 /* PBXContainerItemProxy */ = {
+		590CD4C9E9A83AE72E072FA6FE393852 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4363B3DEE0E244A6E95B497FB82E7385;
 			remoteInfo = LoginServiceKit;
 		};
+		DA868B83F82D22398F1EC05BB4C8F0EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ED77B4B88587C894E85C361023D67C53;
+			remoteInfo = Sparkle;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		028EA2782060225D6749DEDE1AAED61F /* LoginServiceKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LoginServiceKit-Info.plist"; sourceTree = "<group>"; };
-		07BE0B8534F2E2ED4A8CB9FEFE07EFA7 /* LoginServiceKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LoginServiceKit-prefix.pch"; sourceTree = "<group>"; };
+		041057362DA7F583697A740510B1FBC9 /* SUExport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUExport.h; path = Sparkle.framework/Versions/A/Headers/SUExport.h; sourceTree = "<group>"; };
+		0726FE7F310DCB5C6EF88A6FB3C2C7A0 /* SPUDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloader.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloader.h; sourceTree = "<group>"; };
 		0BE896D5F7E7038C5EE4FCF95922D35D /* Pods-2FA to Tray.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-2FA to Tray.modulemap"; sourceTree = "<group>"; };
-		2129FD663555FACAE95A24CDE13D2AE6 /* LoginServiceKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginServiceKit.swift; path = Lib/LoginServiceKit/LoginServiceKit.swift; sourceTree = "<group>"; };
+		10EFEFAD90C6035D8EE5DED84BB5426C /* SPUDownloadData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloadData.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloadData.h; sourceTree = "<group>"; };
+		1E4DA2389AF90C9D7166B76C0A2084B3 /* LoginServiceKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "LoginServiceKit-Info.plist"; sourceTree = "<group>"; };
+		2675B16620D31F268F3533FF8ED1D226 /* SUAppcast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcast.h; path = Sparkle.framework/Versions/A/Headers/SUAppcast.h; sourceTree = "<group>"; };
+		29E7C8959D49E799F60791500E73448C /* SUCodeSigningVerifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUCodeSigningVerifier.h; path = Sparkle.framework/Versions/A/Headers/SUCodeSigningVerifier.h; sourceTree = "<group>"; };
+		3C7F14041125218CDD757CB07843077B /* SPUURLRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUURLRequest.h; path = Sparkle.framework/Versions/A/Headers/SPUURLRequest.h; sourceTree = "<group>"; };
+		3F5089AA3BCE279A66B60F4F7C64B1B5 /* SUStandardVersionComparator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUStandardVersionComparator.h; path = Sparkle.framework/Versions/A/Headers/SUStandardVersionComparator.h; sourceTree = "<group>"; };
+		53CABEBFF401D27685E49A8BE0523A85 /* Sparkle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Sparkle.h; path = Sparkle.framework/Versions/A/Headers/Sparkle.h; sourceTree = "<group>"; };
+		56BAC248F57AA95C31F590314D51A518 /* LoginServiceKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LoginServiceKit.xcconfig; sourceTree = "<group>"; };
+		5A836C7F0B63E8144F031B8A2FCE2C94 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		5F8E62BF9BF8347310B9A58385A4E7D7 /* Pods-2FA to Tray-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-2FA to Tray-umbrella.h"; sourceTree = "<group>"; };
-		5FD16C3867093D1D47BBDD2E9ADC1586 /* LoginServiceKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LoginServiceKit-umbrella.h"; sourceTree = "<group>"; };
-		62642F16D85FB33E8264571C33187F84 /* LoginServiceKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LoginServiceKit.modulemap; sourceTree = "<group>"; };
+		68CE8AD4108D08C2D0170953A69474AB /* SPUDownloaderDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDelegate.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDelegate.h; sourceTree = "<group>"; };
+		7D2C0D8E2D4BFC60FD98F618835FB6AB /* SUVersionComparisonProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionComparisonProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionComparisonProtocol.h; sourceTree = "<group>"; };
 		820475DEE643F008B5FBA1874C6447A9 /* LoginServiceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginServiceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8527EF1D0C627BBF074D04AAE06EE65B /* SPUDownloaderSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderSession.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderSession.h; sourceTree = "<group>"; };
+		900055AB41F14934EBBAF80129A96B2E /* LoginServiceKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LoginServiceKit-umbrella.h"; sourceTree = "<group>"; };
+		95DF0FC25F8B197300B120D5A84ADA69 /* SUAppcastItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUAppcastItem.h; path = Sparkle.framework/Versions/A/Headers/SUAppcastItem.h; sourceTree = "<group>"; };
 		95E43D29B9812A1F8EAF34172821A6DE /* Pods_2FA_to_Tray.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2FA_to_Tray.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97CD22F33955EF6096CD1301639E8F88 /* SPUDownloaderDeprecated.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderDeprecated.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderDeprecated.h; sourceTree = "<group>"; };
+		98A28C13E899806BDFCE9BB7E5851A83 /* LoginServiceKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginServiceKit.swift; path = Lib/LoginServiceKit/LoginServiceKit.swift; sourceTree = "<group>"; };
+		9B9E96C7F805181FC71DB70E115DF81C /* SUErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUErrors.h; path = Sparkle.framework/Versions/A/Headers/SUErrors.h; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0426B741924CD6F79F68CBE81606AE9 /* LoginServiceKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LoginServiceKit.modulemap; sourceTree = "<group>"; };
+		B1049F7543CFB07E1321703D501944E4 /* LoginServiceKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LoginServiceKit-dummy.m"; sourceTree = "<group>"; };
+		B15E8DFAC262F650B451BD3F65F49F56 /* Sparkle.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Sparkle.xcconfig; sourceTree = "<group>"; };
 		B5995AD7C6AC6B5B156FB7B9323665EA /* Pods-2FA to Tray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-2FA to Tray.release.xcconfig"; sourceTree = "<group>"; };
+		B702E0F7FCCDCA74116D59F239844E84 /* LoginServiceKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LoginServiceKit-prefix.pch"; sourceTree = "<group>"; };
 		B7BCA448711D213BA5FF7A810F4662DD /* Pods-2FA to Tray.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-2FA to Tray.debug.xcconfig"; sourceTree = "<group>"; };
+		BDC31FBAD77947918D6EA3EEAD912EAE /* SUVersionDisplayProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUVersionDisplayProtocol.h; path = Sparkle.framework/Versions/A/Headers/SUVersionDisplayProtocol.h; sourceTree = "<group>"; };
+		D4A1D57693A9C515C5FC3A771FEB7C8D /* SUUpdaterDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdaterDelegate.h; path = Sparkle.framework/Versions/A/Headers/SUUpdaterDelegate.h; sourceTree = "<group>"; };
 		D6C6C8799246FE5A4626A975D07D2E58 /* Pods-2FA to Tray-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-2FA to Tray-dummy.m"; sourceTree = "<group>"; };
-		DC6E310FF7B28520F076340E6F6EFA65 /* LoginServiceKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LoginServiceKit.xcconfig; sourceTree = "<group>"; };
+		DBB75BAE7907556B5E5F810994C7810A /* SPUDownloaderProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPUDownloaderProtocol.h; path = Sparkle.framework/Versions/A/Headers/SPUDownloaderProtocol.h; sourceTree = "<group>"; };
 		E757A3D63052A3ACE765FD512B245C74 /* Pods-2FA to Tray-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-2FA to Tray-Info.plist"; sourceTree = "<group>"; };
 		EE0AE030101732C4885257F002913BBC /* Pods-2FA to Tray-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-2FA to Tray-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F0B972394980DE627A8E232FBBA5DFC0 /* Pods-2FA to Tray-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-2FA to Tray-acknowledgements.plist"; sourceTree = "<group>"; };
-		F6E8B9A9D2C2228A22B6BD2A7BE1F9C9 /* LoginServiceKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LoginServiceKit-dummy.m"; sourceTree = "<group>"; };
 		F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		FAB474A6FEE9B4C597526FF784B719B7 /* Pods-2FA to Tray-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-2FA to Tray-frameworks.sh"; sourceTree = "<group>"; };
+		FCDFB8409AF4D291F11F6BCF06AC9557 /* SUUpdater.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SUUpdater.h; path = Sparkle.framework/Versions/A/Headers/SUUpdater.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +98,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BD7BEB6A0837D9D7BB261AF221BD272E /* Frameworks */ = {
+		8382DBE3AF2596D0A949EF085AD590E8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF24D3A7B6D05070747317DAFE0A5ECE /* Cocoa.framework in Frameworks */,
+				35813E350294C84BE087AEF090EC0AAF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +117,29 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		1B36E8981CA49BF4B50A4AF34F745420 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0426B741924CD6F79F68CBE81606AE9 /* LoginServiceKit.modulemap */,
+				56BAC248F57AA95C31F590314D51A518 /* LoginServiceKit.xcconfig */,
+				B1049F7543CFB07E1321703D501944E4 /* LoginServiceKit-dummy.m */,
+				1E4DA2389AF90C9D7166B76C0A2084B3 /* LoginServiceKit-Info.plist */,
+				B702E0F7FCCDCA74116D59F239844E84 /* LoginServiceKit-prefix.pch */,
+				900055AB41F14934EBBAF80129A96B2E /* LoginServiceKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/LoginServiceKit";
+			sourceTree = "<group>";
+		};
+		43092225D85A9B9EF4AD64E854F6B7D8 /* LoginServiceKit */ = {
+			isa = PBXGroup;
+			children = (
+				98A28C13E899806BDFCE9BB7E5851A83 /* LoginServiceKit.swift */,
+				1B36E8981CA49BF4B50A4AF34F745420 /* Support Files */,
+			);
+			path = LoginServiceKit;
+			sourceTree = "<group>";
+		};
 		589F2AC63FE933EC97B6864F77478083 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,13 +149,40 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8F9EFBF59D705A36FFDD18B602E8C869 /* LoginServiceKit */ = {
+		664E09EA0903C7E0685476ABBEF11005 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2129FD663555FACAE95A24CDE13D2AE6 /* LoginServiceKit.swift */,
-				F4D9A3408EB069E07797CE270BAF35F8 /* Support Files */,
+				43092225D85A9B9EF4AD64E854F6B7D8 /* LoginServiceKit */,
+				7F6B63CC2B84EFA9FFF19A04C2DD1A67 /* Sparkle */,
 			);
-			path = LoginServiceKit;
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7F6B63CC2B84EFA9FFF19A04C2DD1A67 /* Sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				53CABEBFF401D27685E49A8BE0523A85 /* Sparkle.h */,
+				10EFEFAD90C6035D8EE5DED84BB5426C /* SPUDownloadData.h */,
+				0726FE7F310DCB5C6EF88A6FB3C2C7A0 /* SPUDownloader.h */,
+				68CE8AD4108D08C2D0170953A69474AB /* SPUDownloaderDelegate.h */,
+				97CD22F33955EF6096CD1301639E8F88 /* SPUDownloaderDeprecated.h */,
+				DBB75BAE7907556B5E5F810994C7810A /* SPUDownloaderProtocol.h */,
+				8527EF1D0C627BBF074D04AAE06EE65B /* SPUDownloaderSession.h */,
+				3C7F14041125218CDD757CB07843077B /* SPUURLRequest.h */,
+				2675B16620D31F268F3533FF8ED1D226 /* SUAppcast.h */,
+				95DF0FC25F8B197300B120D5A84ADA69 /* SUAppcastItem.h */,
+				29E7C8959D49E799F60791500E73448C /* SUCodeSigningVerifier.h */,
+				9B9E96C7F805181FC71DB70E115DF81C /* SUErrors.h */,
+				041057362DA7F583697A740510B1FBC9 /* SUExport.h */,
+				3F5089AA3BCE279A66B60F4F7C64B1B5 /* SUStandardVersionComparator.h */,
+				FCDFB8409AF4D291F11F6BCF06AC9557 /* SUUpdater.h */,
+				D4A1D57693A9C515C5FC3A771FEB7C8D /* SUUpdaterDelegate.h */,
+				7D2C0D8E2D4BFC60FD98F618835FB6AB /* SUVersionComparisonProtocol.h */,
+				BDC31FBAD77947918D6EA3EEAD912EAE /* SUVersionDisplayProtocol.h */,
+				F290CDF02EFBF7ECDFB1F7B97FC30001 /* Frameworks */,
+				EFA4607CED74320A20C0C5054D8447AC /* Support Files */,
+			);
+			path = Sparkle;
 			sourceTree = "<group>";
 		};
 		9F251361CA88F136E44E4B2A426DE583 /* Pods-2FA to Tray */ = {
@@ -112,14 +202,6 @@
 			path = "Target Support Files/Pods-2FA to Tray";
 			sourceTree = "<group>";
 		};
-		A95C8D1716EB36BFAA5BEA992DE63920 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8F9EFBF59D705A36FFDD18B602E8C869 /* LoginServiceKit */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		CBD43E0947D94E318A0ED1350CFF29ED /* OS X */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +215,7 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */,
-				A95C8D1716EB36BFAA5BEA992DE63920 /* Pods */,
+				664E09EA0903C7E0685476ABBEF11005 /* Pods */,
 				589F2AC63FE933EC97B6864F77478083 /* Products */,
 				182047F599FDB275A2CD03691F43741A /* Targets Support Files */,
 			);
@@ -147,36 +229,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F4D9A3408EB069E07797CE270BAF35F8 /* Support Files */ = {
+		EFA4607CED74320A20C0C5054D8447AC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				62642F16D85FB33E8264571C33187F84 /* LoginServiceKit.modulemap */,
-				DC6E310FF7B28520F076340E6F6EFA65 /* LoginServiceKit.xcconfig */,
-				F6E8B9A9D2C2228A22B6BD2A7BE1F9C9 /* LoginServiceKit-dummy.m */,
-				028EA2782060225D6749DEDE1AAED61F /* LoginServiceKit-Info.plist */,
-				07BE0B8534F2E2ED4A8CB9FEFE07EFA7 /* LoginServiceKit-prefix.pch */,
-				5FD16C3867093D1D47BBDD2E9ADC1586 /* LoginServiceKit-umbrella.h */,
+				B15E8DFAC262F650B451BD3F65F49F56 /* Sparkle.xcconfig */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/LoginServiceKit";
+			path = "../Target Support Files/Sparkle";
+			sourceTree = "<group>";
+		};
+		F290CDF02EFBF7ECDFB1F7B97FC30001 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A836C7F0B63E8144F031B8A2FCE2C94 /* Sparkle.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		8DFF98DB43E207938E92348109C1AD18 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EC651A3CEED8838B64E4F549DC9A0F33 /* Pods-2FA to Tray-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		97C249D8B94D576C224CA6105B518D02 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				FD9EA8AA8D3959577C324CE51105CC90 /* LoginServiceKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AE753DDDB90B26A9DCDF6000A5922A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D0C8D649FB0792AA20B444BFFED3838 /* Pods-2FA to Tray-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,17 +288,18 @@
 		};
 		7530C5658E95391BE8B1AD997421F001 /* Pods-2FA to Tray */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4BB45C64046872647849022A372882B1 /* Build configuration list for PBXNativeTarget "Pods-2FA to Tray" */;
+			buildConfigurationList = BD57DA9A060002B75182586901D43F59 /* Build configuration list for PBXNativeTarget "Pods-2FA to Tray" */;
 			buildPhases = (
-				8DFF98DB43E207938E92348109C1AD18 /* Headers */,
-				429109D41E6C5D4CC24BE554A305E664 /* Sources */,
-				BD7BEB6A0837D9D7BB261AF221BD272E /* Frameworks */,
-				5281CD3C443B23BB742F43DFAFDAB0F3 /* Resources */,
+				E1AE753DDDB90B26A9DCDF6000A5922A /* Headers */,
+				8AF11B9222A886E47EAFBC54C38FFAAF /* Sources */,
+				8382DBE3AF2596D0A949EF085AD590E8 /* Frameworks */,
+				E03A0FF68B734F11A0D7C1695EAE247D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				50BA1BFA3A6072D7EB92CCC4710622C2 /* PBXTargetDependency */,
+				9BA762BB49906FA40BFFC0F703C8BA30 /* PBXTargetDependency */,
+				8B5A2A9AD4C4959089F1418607708165 /* PBXTargetDependency */,
 			);
 			name = "Pods-2FA to Tray";
 			productName = "Pods-2FA to Tray";
@@ -244,19 +330,20 @@
 			targets = (
 				4363B3DEE0E244A6E95B497FB82E7385 /* LoginServiceKit */,
 				7530C5658E95391BE8B1AD997421F001 /* Pods-2FA to Tray */,
+				ED77B4B88587C894E85C361023D67C53 /* Sparkle */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5281CD3C443B23BB742F43DFAFDAB0F3 /* Resources */ = {
+		D67CF8E41FCE21EB2DB9C6B008323288 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D67CF8E41FCE21EB2DB9C6B008323288 /* Resources */ = {
+		E03A0FF68B734F11A0D7C1695EAE247D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -266,11 +353,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		429109D41E6C5D4CC24BE554A305E664 /* Sources */ = {
+		8AF11B9222A886E47EAFBC54C38FFAAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CF9EAF3CD133A932B3106768CD42A06 /* Pods-2FA to Tray-dummy.m in Sources */,
+				68B2597D111A237ADB920B8AD41CFF89 /* Pods-2FA to Tray-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,15 +373,76 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		50BA1BFA3A6072D7EB92CCC4710622C2 /* PBXTargetDependency */ = {
+		8B5A2A9AD4C4959089F1418607708165 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Sparkle;
+			target = ED77B4B88587C894E85C361023D67C53 /* Sparkle */;
+			targetProxy = DA868B83F82D22398F1EC05BB4C8F0EC /* PBXContainerItemProxy */;
+		};
+		9BA762BB49906FA40BFFC0F703C8BA30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LoginServiceKit;
 			target = 4363B3DEE0E244A6E95B497FB82E7385 /* LoginServiceKit */;
-			targetProxy = 908E69D67C04FCB898EAF2013B298C86 /* PBXContainerItemProxy */;
+			targetProxy = 590CD4C9E9A83AE72E072FA6FE393852 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		094B4B3CA96A928C7018A10B308B0FF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7BCA448711D213BA5FF7A810F4662DD /* Pods-2FA to Tray.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MODULEMAP_FILE = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		21221507EB6C5017FA40BD87C8A5AE87 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B15E8DFAC262F650B451BD3F65F49F56 /* Sparkle.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		430C0A1F2A9CB52955BEC7CE69B7B629 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -419,9 +567,25 @@
 			};
 			name = Release;
 		};
+		5AFD67EFA6B3F27B4F0B0F8027C335F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B15E8DFAC262F650B451BD3F65F49F56 /* Sparkle.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
 		5D90559411EA2D0B33C8DB1257E51D9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC6E310FF7B28520F076340E6F6EFA65 /* LoginServiceKit.xcconfig */;
+			baseConfigurationReference = 56BAC248F57AA95C31F590314D51A518 /* LoginServiceKit.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -456,7 +620,7 @@
 			};
 			name = Debug;
 		};
-		AE30D27F47E6D36C5EEA92B05B14BEDB /* Release */ = {
+		7BD4904ACF607CC6191190773D98AA09 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B5995AD7C6AC6B5B156FB7B9323665EA /* Pods-2FA to Tray.release.xcconfig */;
 			buildSettings = {
@@ -495,48 +659,9 @@
 			};
 			name = Release;
 		};
-		B989A7CF734AEB87FD31E687E30359F5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7BCA448711D213BA5FF7A810F4662DD /* Pods-2FA to Tray.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MODULEMAP_FILE = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		E11D1C058B0BEFD50B5C1DF302025108 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC6E310FF7B28520F076340E6F6EFA65 /* LoginServiceKit.xcconfig */;
+			baseConfigurationReference = 56BAC248F57AA95C31F590314D51A518 /* LoginServiceKit.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
@@ -574,6 +699,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C8D06A2289713323892B3638F08AC0B /* Build configuration list for PBXAggregateTarget "Sparkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AFD67EFA6B3F27B4F0B0F8027C335F7 /* Debug */,
+				21221507EB6C5017FA40BD87C8A5AE87 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -583,20 +717,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4BB45C64046872647849022A372882B1 /* Build configuration list for PBXNativeTarget "Pods-2FA to Tray" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B989A7CF734AEB87FD31E687E30359F5 /* Debug */,
-				AE30D27F47E6D36C5EEA92B05B14BEDB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B6310DB0AF3F4FB8C97CF81017433C2D /* Build configuration list for PBXNativeTarget "LoginServiceKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D90559411EA2D0B33C8DB1257E51D9A /* Debug */,
 				E11D1C058B0BEFD50B5C1DF302025108 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD57DA9A060002B75182586901D43F59 /* Build configuration list for PBXNativeTarget "Pods-2FA to Tray" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				094B4B3CA96A928C7018A10B308B0FF7 /* Debug */,
+				7BD4904ACF607CC6191190773D98AA09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
