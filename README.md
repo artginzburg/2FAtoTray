@@ -2,13 +2,13 @@
   <img src="icons/icon256.png" width="200" height="200">
 	<h1>2FA to Tray</h1>
 	<p>
-		Copy <b><a target="_blank" href="//en.wikipedia.org/wiki/Multi-factor_authentication">2FA</a></b> tokens in a tap <sup>*</sup>
+		Copy <b><a href="//en.wikipedia.org/wiki/Multi-factor_authentication">2FA</a></b> tokens in a tap <sup>*</sup>
 	</p>
 	<br>
 	<br>
 	<br>
 	<p align="right">
-		<sup>*</sup> or with HotKey
+		<sup>*</sup> or with a <b>HotKey<b>
 	</p>
 </div>
 
@@ -20,7 +20,7 @@
 brew cask install dafuqtor/tap/2fatotray
 ```
 
-#### Direct Download · **[Latest Release](//github.com/DaFuqtor/2FAtoTray/releases/latest/download/2FAtoTray.zip) ([![GitHub release](https://img.shields.io/github/release/dafuqtor/2fatotray?label=%20&color=gray)](//github.com/DaFuqtor/2FAtoTray/releases))**
+### Direct Download · **[Latest Release](//github.com/DaFuqtor/2FAtoTray/releases/latest/download/2FAtoTray.zip) ([![GitHub release](https://img.shields.io/github/release/dafuqtor/2fatotray?label=%20&color=gray)](//github.com/DaFuqtor/2FAtoTray/releases))**
 
 *Requires macOS<sup>10.14</sup> or later.*
 
@@ -43,15 +43,23 @@ brew cask install dafuqtor/tap/2fatotray
 - Automatically **sync** tokens between all your macOS devices
 - HotKey: <kbd>⌥</kbd><kbd>⌘</kbd><kbd>G</kbd>
   - Can even auto-press the Return key for you
+- <details>
+<summary>Spotlight action</summary>
+</details>
 - Secure
-	> 2FA to Tray uses Apple's [**Keychain Access**](https://en.wikipedia.org/wiki/Keychain_(software))
+	> 2FA to Tray uses Apple's [**Keychain Access**](//en.wikipedia.org/wiki/Keychain_(software))
 - Lightweight, fast and native
 
 <br>
-
 <br>
 
 ## Why?
 
 1. Authy Desktop sucks
 2. Google is too busy to make an app for a system like macOS
+
+<br>
+
+### Contribute
+
+> Use the [Issues](//github.com/Dafuqtor/2FAtoTray/issues) page to suggest your ideas or special needs :)

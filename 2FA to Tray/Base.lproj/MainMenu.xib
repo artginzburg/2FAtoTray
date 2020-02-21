@@ -38,12 +38,12 @@
                         <action selector="pasteTokenClicked:" target="dok-4Z-Dc3" id="C0k-86-o0p"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Add new..." image="NSAddTemplate" keyEquivalent="+" id="mOb-6m-Qx6">
+                <menuItem title="Add new..." keyEquivalent="+" id="mOb-6m-Qx6">
                     <attributedString key="attributedTitle">
                         <fragment content="Add new...">
                             <attributes>
-                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <font key="NSFont" metaFont="label" size="12"/>
+                                <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" metaFont="label" size="11"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -74,7 +74,8 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Auto-paste" autoenablesItems="NO" id="teo-zT-IQW">
                                     <items>
-                                        <menuItem title="Needs accessibility permissions" hidden="YES" id="045-Ih-Tf7">
+                                        <menuItem title="Needs accessibility permissions" offStateImage="NSSmartBadgeTemplate" hidden="YES" id="045-Ih-Tf7">
+                                            <attributedString key="attributedTitle"/>
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="permissionsButtonClicked:" target="dok-4Z-Dc3" id="jGb-rU-oeN"/>
@@ -114,6 +115,15 @@
                     </menu>
                 </menuItem>
                 <menuItem title="Quit" keyEquivalent="q" id="YdM-ld-HSz" userLabel="Quit">
+                    <attributedString key="attributedTitle">
+                        <fragment content="Quit">
+                            <attributes>
+                                <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                <font key="NSFont" metaFont="system"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
                     <connections>
                         <action selector="terminate:" target="-1" id="gjK-Ut-vGN"/>
                     </connections>
@@ -123,6 +133,6 @@
         </menu>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSSmartBadgeTemplate" width="14" height="14"/>
     </resources>
 </document>

@@ -99,12 +99,16 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     alert.addButton(withTitle: "Cancel")
     alert.addButton(withTitle: "Delete secret from disk")
     
-    let textfield = EditableNSTextField(frame: NSRect(x: 0.0, y: 0.0, width: 180.0, height: 22.0))
+    let textfield = EditableNSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 19))
     textfield.alignment = .center
     textfield.placeholderString = "AADEM4YUY5GYZHHP"
+    textfield.maximumNumberOfLines = 1;
+    textfield.isBordered = false
+    textfield.font = .systemFont(ofSize: 16)
+    textfield.backgroundColor = .windowBackgroundColor
     alert.accessoryView = textfield
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
       textfield.becomeFirstResponder()
     }
     
@@ -336,6 +340,9 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         }
       }
     }
+    
+    permissionsButton.toolTip = "Open Accessibility Preferences"
+    hotkeyButton.toolTip = "⌥⌘G"
   }
   
   func tryToAddInstance() {
