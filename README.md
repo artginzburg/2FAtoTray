@@ -43,12 +43,11 @@ brew cask install dafuqtor/tap/2fatotray
 - Automatically **sync** tokens between all your macOS devices
 - HotKey: <kbd>⌥</kbd><kbd>⌘</kbd><kbd>G</kbd>
   - Can even auto-press the Return key for you
-- <details>
-<summary>Spotlight action</summary>
-</details>
+- Spotlight action
 - Secure
 	> 2FA to Tray uses Apple's [**Keychain Access**](//en.wikipedia.org/wiki/Keychain_(software))
 - Lightweight, fast and native
+- Auto-updates
 
 <br>
 <br>
