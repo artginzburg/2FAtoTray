@@ -4,6 +4,5 @@ target '2FA to Tray' do
   use_frameworks!
 
   pod 'LoginServiceKit', :git => 'https://github.com/Clipy/LoginServiceKit.git'
-  pod 'Sparkle'
 
 end

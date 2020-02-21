@@ -47,7 +47,7 @@ brew cask install dafuqtor/tap/2fatotray
 - Secure
 	> 2FA to Tray uses Apple's [**Keychain Access**](//en.wikipedia.org/wiki/Keychain_(software))
 - Lightweight, fast and native
-- Auto-updates
+- Auto-updates (via Homebrew)
 
 <br>
 <br>

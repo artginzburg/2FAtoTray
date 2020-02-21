@@ -36,7 +36,5 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-	<key>SUFeedURL</key>
-	<string>https://github.com/DaFuqtor/2FAtoTray/releases.atom</string>
 </dict>
 </plist>
