@@ -8,7 +8,7 @@
 	<br>
 	<br>
 	<p align="right">
-		<sup>*</sup> or with a <b>HotKey<b>
+		<sup>*</sup> or with a <b>HotKey</b>
 	</p>
 </div>
 
