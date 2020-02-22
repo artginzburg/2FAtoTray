@@ -22,6 +22,12 @@
 
 <p>Reopen (useful with Spotlight) &nbsp·&nbsp to copy the token</p>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Install
 
 ### Via :beer: [Homebrew Cask](//brew.sh)
