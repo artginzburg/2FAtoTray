@@ -12,6 +12,16 @@
 	</p>
 </div>
 
+<img src="screenshot-menu-bar.png" align="left" width="40%">
+
+<p>Click the status icon or <kbd>⌥</kbd><kbd>⌘</kbd><kbd>G</kbd> &nbsp·&nbsp to copy the token</p>
+
+<p>RMB &nbsp·&nbsp to open the menu</p>
+
+<p>Double click &nbsp·&nbsp to change secret code or paste the token</p>
+
+<p>Reopen (useful with Spotlight) &nbsp·&nbsp to copy the token</p>
+
 ## Install
 
 ### Via :beer: [Homebrew Cask](//brew.sh)
@@ -26,14 +36,9 @@ brew cask install dafuqtor/tap/2fatotray
 
 <br>
 
-<h2 align="right">:mag: Usage</h2>
-<p align="right"><kbd>Click</kbd> &nbsp·&nbsp to copy</p>
-<p align="right"><kbd>RMB</kbd> &nbsp·&nbsp to open menu</p>
-<p align="right"><kbd>Double Click</kbd> &nbsp·&nbsp to change secret</p>
-<p align="right"><kbd>⌘</kbd><kbd>Space</kbd> &nbsp·&nbsp type <code>2fa</code> &nbsp·&nbsp hit <kbd>Enter</kbd>&nbsp·&nbsp to copy</p>
-<blockquote align="right">
-	<p>(All the actions are also available in menu)</p>
-</blockquote>
+<h2 align="right">:mag: Usage of the menu</h2>
+<p align="right"><kbd>RMB the status icon</kbd> &nbsp·&nbsp to open the menu</p>
+<p align="right"><kbd>Click a token</kbd> &nbsp·&nbsp to copy it and select it for future interactions (HotKey, status icon click)</p>
 
 <br>
 <br>
