@@ -28,6 +28,8 @@
 <br>
 <br>
 
+<img align="right" alt="GitHub All Releases" src="https://img.shields.io/github/downloads/dafuqtor/2fatotray/total?color=teal">
+
 ## Install
 
 ### Via :beer: [Homebrew Cask](//brew.sh)
