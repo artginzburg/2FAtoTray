@@ -16,6 +16,20 @@ extension UserDefaults {
   }
 }
 
+extension UserDefaults {
+  // check for is first launch - only true on first invocation after app install, false on all further invocations
+  // Note: Store this value in AppDelegate if you have multiple places where you are checking for this flag
+  static func isFirstLaunch() -> Bool {
+    let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
+    let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
+    if (isFirstLaunch) {
+      UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
+      UserDefaults.standard.synchronize()
+    }
+    return isFirstLaunch
+  }
+}
+
 extension NSControl.StateValue {
   mutating func toggle() {
     self = self == .on ? .off : .on
@@ -162,12 +176,50 @@ class OTP {
   
   func copy() {
     clipboard.copy(self.token)
-    print("copied the token")
+//    print("copied the token")
   }
+}
+import Paddle
+
+func initializePaddle() -> (paddle: Paddle?, paddleProduct: PADProduct?) {
+  // Your Paddle SDK Config from the Vendor Dashboard
+  let myPaddleVendorID = "108940"
+  let myPaddleProductID = "584442"
+  let myPaddleAPIKey = "0309952d219120c8bfafc69e435ba7a9"
+  
+  // Default Product Config in case we're unable to reach our servers on first run
+  let defaultProductConfig = PADProductConfiguration()
+  defaultProductConfig.productName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
+  defaultProductConfig.vendorName = "DaFuqtor"
+  defaultProductConfig.trialLength = 3
+  defaultProductConfig.trialType = PADProductTrialType.timeLimited
+  
+  // Initialize the SDK singleton with the config
+  let paddle = Paddle.sharedInstance(withVendorID: myPaddleVendorID,
+                                     apiKey: myPaddleAPIKey,
+                                     productID: myPaddleProductID,
+                                     configuration: defaultProductConfig,
+                                     delegate:nil)
+  
+  // Initialize the Product you'd like to work with
+  let paddleProduct = PADProduct(productID: myPaddleProductID,
+                                 productType: PADProductType.sdkProduct,
+                                 configuration: defaultProductConfig)
+  
+  return (paddle, paddleProduct)
 }
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+  
+  func applicationWillFinishLaunching(_ notification: Notification) {
+    if !UserDefaults.isFirstLaunch() {
+      let (paddle, paddleProduct) = initializePaddle()
+      paddleProduct?.refresh({ (delta: [AnyHashable : Any]?, error: Error?) in
+        paddle?.showProductAccessDialog(with: paddleProduct!)
+      })
+    }
+  }
   func applicationShouldHandleReopen(_ sender: NSApplication,
                                      hasVisibleWindows flag: Bool) -> Bool
   {
@@ -177,9 +229,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
         button.highlight(false)
       }
-      print("highlighted statusItem.button")
+//      print("highlighted statusItem.button")
     }
-    print("handled reopen")
+//    print("handled reopen")
     return true
   }
 }

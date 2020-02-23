@@ -13,10 +13,26 @@
 		3148B57E23DE260F0075A192 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57C23DE260F0075A192 /* MainMenu.xib */; };
 		3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B58623DE2A700075A192 /* StatusMenuController.swift */; };
 		3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3152B18623DF762300B8FA7E /* KeychainAccess */; };
+		31D6B72923FF726D006ED4BC /* Paddle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31D6B72823FF726D006ED4BC /* Paddle.framework */; };
+		31D6B72B23FF72C7006ED4BC /* Paddle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 31D6B72823FF726D006ED4BC /* Paddle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		31E0DC8A23DE374900AC1230 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */; };
 		31E0DC8B23DE374900AC1230 /* totp.js in Resources */ = {isa = PBXBuildFile; fileRef = 31E0DC8923DE374900AC1230 /* totp.js */; };
 		40AEECBBC8958A3FC40BD381 /* Pods_2FA_to_Tray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D368B2DE27131740CA97301 /* Pods_2FA_to_Tray.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		31D6B72A23FF72B0006ED4BC /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				31D6B72B23FF72C7006ED4BC /* Paddle.framework in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3148B57523DE260D0075A192 /* 2FA to Tray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2FA to Tray.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +42,7 @@
 		3148B57F23DE260F0075A192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3148B58023DE260F0075A192 /* 2FAtoTray.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 2FAtoTray.entitlements; sourceTree = "<group>"; };
 		3148B58623DE2A700075A192 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		31D6B72823FF726D006ED4BC /* Paddle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Paddle.framework; sourceTree = "<group>"; };
 		31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		31E0DC8923DE374900AC1230 /* totp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = totp.js; sourceTree = "<group>"; };
 		7103E84D3F79ED69F3DD35F8 /* Pods-2FA to Tray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2FA to Tray.release.xcconfig"; path = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray.release.xcconfig"; sourceTree = "<group>"; };
@@ -40,6 +57,7 @@
 			files = (
 				313F4DB523E00DC40086E836 /* HotKey in Frameworks */,
 				3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */,
+				31D6B72923FF726D006ED4BC /* Paddle.framework in Frameworks */,
 				40AEECBBC8958A3FC40BD381 /* Pods_2FA_to_Tray.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +101,7 @@
 		9AA3A54D865A3318572A0845 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31D6B72823FF726D006ED4BC /* Paddle.framework */,
 				9D368B2DE27131740CA97301 /* Pods_2FA_to_Tray.framework */,
 			);
 			name = Frameworks;
@@ -109,6 +128,7 @@
 				3148B57223DE260D0075A192 /* Frameworks */,
 				3148B57323DE260D0075A192 /* Resources */,
 				E9C050E747033A0C29AAF70A /* [CP] Embed Pods Frameworks */,
+				31D6B72A23FF72B0006ED4BC /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -368,15 +388,19 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = R2294BC6J8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.5;
+				MARKETING_VERSION = 1.4.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -393,15 +417,19 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = R2294BC6J8;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.5;
+				MARKETING_VERSION = 1.4.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
