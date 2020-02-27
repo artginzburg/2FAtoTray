@@ -42,14 +42,14 @@ func turnAllStatesOff() {
         instance.displayItem?.state = .off
       }
     }
-//    print("turned all states off")
+    print("turned all states off")
   }
 }
 
 func setStateForSelected(_ selected: Int) {
   if !otpInstances.isEmpty {
     if (otpInstances[selected].displayItem != nil) {
-//      print("set selected state for: \(selected)")
+      print("set selected state for: \(selected)")
       otpInstances[selected].displayItem?.state = .on
     }
   }
@@ -58,12 +58,11 @@ func setStateForSelected(_ selected: Int) {
 func reinitializeStates(_ select: Int) {
   turnAllStatesOff()
   setStateForSelected(select)
-//  print("Newly selected instance: \(select)")
+  print("Newly selected instance: \(select)")
 }
 
 import LoginServiceKit
 import Carbon
-import Paddle
 
 class StatusMenuController: NSObject, NSMenuDelegate {
   
@@ -84,77 +83,64 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   }
   
   func showAlert() {
-    let theShow = {
-      if otpInstances.isEmpty {
-//        print("otpInstances is empty")
-        return
-      }
-      if (NSApplication.shared.modalWindow) != nil {
-        return
-      }
-      let currentlySelectedInstance = otpInstances[currentlySelectedSeed]
-      let alert = NSAlert()
-      alert.messageText = "Change secret seed"
-      alert.informativeText = "Enter a code which should look like this:"
-      
-      alert.addButton(withTitle: "OK")
-      alert.addButton(withTitle: "Cancel")
-      alert.addButton(withTitle: "Delete secret from disk")
-      
-      let textfield = EditableNSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 19))
-      textfield.alignment = .center
-      textfield.placeholderString = "AADEM4YUY5GYZHHP"
-      textfield.maximumNumberOfLines = 1;
-      textfield.isBordered = false
-      textfield.font = .systemFont(ofSize: 16)
-      textfield.backgroundColor = .windowBackgroundColor
-      alert.accessoryView = textfield
-      
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-        textfield.becomeFirstResponder()
-      }
-      
-      let previousSecret = currentlySelectedInstance.secret
-      if !previousSecret.isEmpty {
-        textfield.stringValue = previousSecret
-      }
-      
-      let response = alert.runModal()
-      if response == .alertFirstButtonReturn {
-//        print("Pressed OK")
-        let value = textfield.stringValue
-        if value.isEmpty {
-//          print("Entered value is empty")
-          self.removeInstance(currentlySelectedInstance)
-        } else {
-          currentlySelectedInstance.secret = value.condenseWhitespace()
-        }
-      } else if response == .alertSecondButtonReturn {
-//        print("Pressed Cancel")
-        if currentlySelectedInstance.secret.isEmpty {
-          self.removeInstance(currentlySelectedInstance)
-        }
-      } else if response == .alertThirdButtonReturn {
-//        print("Pressed Delete secret")
-        currentlySelectedInstance.secret = ""
-        currentlySelectedInstance.token = ""
-        currentlySelectedInstance.button?.toolTip = ""
-        self.removeInstance(currentlySelectedInstance)
-      }
-      self.reinitializeKeychain()
-      self.initializeInstances()
+    if otpInstances.isEmpty {
+      print("otpInstances is empty")
+      return
+    }
+    if (NSApplication.shared.modalWindow) != nil {
+      return
+    }
+    let currentlySelectedInstance = otpInstances[currentlySelectedSeed]
+    let alert = NSAlert()
+    alert.messageText = "Change secret seed"
+    alert.informativeText = "Enter a code which should look like this:"
+    
+    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: "Cancel")
+    alert.addButton(withTitle: "Delete secret from disk")
+    
+    let textfield = EditableNSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 19))
+    textfield.alignment = .center
+    textfield.placeholderString = "AADEM4YUY5GYZHHP"
+    textfield.maximumNumberOfLines = 1;
+    textfield.isBordered = false
+    textfield.font = .systemFont(ofSize: 16)
+    textfield.backgroundColor = .windowBackgroundColor
+    alert.accessoryView = textfield
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+      textfield.becomeFirstResponder()
     }
     
-    let (paddle, paddleProduct) = initializePaddle()
-    if paddleProduct!.activated {
-      theShow()
-    } else {
-      if Int(truncating: (paddleProduct?.trialDaysRemaining)!) > 0 {
-        theShow()
-      } else {
-        paddle?.showProductAccessDialog(with: paddleProduct!)
-      }
+    let previousSecret = currentlySelectedInstance.secret
+    if !previousSecret.isEmpty {
+      textfield.stringValue = previousSecret
     }
+    
+    let response = alert.runModal()
+    if response == .alertFirstButtonReturn {
+      print("Pressed OK")
+      let value = textfield.stringValue
+      if value.isEmpty {
+        print("Entered value is empty")
+        removeInstance(currentlySelectedInstance)
+      } else {
+        currentlySelectedInstance.secret = value.condenseWhitespace()
+      }
+    } else if response == .alertSecondButtonReturn {
+      print("Pressed Cancel")
+      if currentlySelectedInstance.secret.isEmpty {
+        removeInstance(currentlySelectedInstance)
+      }
+    } else if response == .alertThirdButtonReturn {
+      print("Pressed Delete secret")
+      currentlySelectedInstance.secret = ""
+      currentlySelectedInstance.token = ""
+      currentlySelectedInstance.button?.toolTip = ""
+      removeInstance(currentlySelectedInstance)
+    }
+    reinitializeKeychain()
+    initializeInstances()
   }
   
   func removeInstance(_ instance: OTP) {
@@ -167,15 +153,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   func reinitializeKeychain() {
     var secrets: [String] = []
     
-//    print("QTY of instances: \(otpInstances.count)")
+    print("QTY of instances: \(otpInstances.count)")
     
     if otpInstances.isEmpty {
-//      print("otpInstances is Empty")
+      print("otpInstances is Empty")
     } else {
       for inst in otpInstances {
         if inst.secret.isEmpty {
           removeInstance(inst)
-//          print("removed an instance due to empty secret")
+          print("removed an instance due to empty secret")
         } else {
           secrets.append(inst.secret)
         }
@@ -187,7 +173,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       if secrets.count == 0 {
         do {
           try keychain.remove("secret")
-//          print("removed keychain item")
+          print("removed keychain item")
         } catch let error {
           print("error: \(error)")
         }
@@ -248,26 +234,26 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       }
     }
     otpInstances.removeAll()
-//    print("Removed all instances")
+    print("Removed all instances")
     
     let secrets = keychain["secret"]
     if secrets == nil {
-//      print("Keychain 'secret' is empty")
+      print("Keychain 'secret' is empty")
       if let button = statusItem.button {
         button.appearsDisabled = true
       }
       return
     }
     if let datan = secrets?.decodeUrl().data(using: String.Encoding.utf8) {
-//      print("Initializing instances from keychain")
+      print("Initializing instances from keychain")
       if let jsonc = datan.dataToJSON() {
         let dataArray = (jsonc as! NSArray) as Array
-//        print("Stored secrets already: \(dataArray.count)")
+        print("Stored secrets already: \(dataArray.count)")
         
         var newInstIndex = 0
         
         for secret in dataArray {
-//          print("\(secret) will be initialized")
+          print("\(secret) will be initialized")
           let theSecret = (secret as! String).condenseWhitespace()
           
           let newOtpInstance = OTP()
@@ -315,15 +301,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       
       let mouseView = mouseHandlerView(frame: button.frame)
       
-      let doubleClickAction = {
-        if defaults.bool(forKey: "pasteOnDoubleClick") {
-          clipboard.paste()
-          self.enterAfterAutoPaste()
-        } else {
-          self.showAlert()
-        }
-      }
-      
       mouseView.onLeftMouseDown = {
         if otpInstances.isEmpty {
           self.tryToAddInstance()
@@ -339,21 +316,17 @@ class StatusMenuController: NSObject, NSMenuDelegate {
           button.highlight(false)
         }
         if (NSApp.currentEvent?.clickCount == 2) {
-          doubleClickAction()
+          if defaults.bool(forKey: "pasteOnDoubleClick") {
+            clipboard.paste()
+            self.enterAfterAutoPaste()
+          } else {
+            self.showAlert()
+          }
         }
       }
       
       mouseView.onRightMouseDown = {
-        let (paddle, paddleProduct) = initializePaddle()
-        if paddleProduct!.activated {
-          button.performClick(NSApp.currentEvent)
-        } else {
-          if Int(truncating: (paddleProduct?.trialDaysRemaining)!) > 0 {
-            button.performClick(NSApp.currentEvent)
-          } else {
-            paddle?.showProductAccessDialog(with: paddleProduct!)
-          }
-        }
+        button.performClick(NSApp.currentEvent)
       }
       
       button.addSubview(mouseView)
@@ -462,7 +435,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   @IBOutlet weak var enterAfterAutoPasteButton: NSMenuItem!
   @IBAction func enterAfterAutoPasteClicked(_ sender: NSMenuItem) {
     defaults.boolToggle("enterAfterAutoPaste")
-//    print("switched enterAfterAutoPaste pref")
+    print("switched enterAfterAutoPaste pref")
   }
   
   func menuNeedsUpdate(_ menu: NSMenu) {
