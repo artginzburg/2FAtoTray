@@ -22,6 +22,7 @@
                 <outlet property="pasteOnClickButton" destination="6CR-IJ-zXp" id="Rtt-mm-SeB"/>
                 <outlet property="pasteOnDoubleClickButton" destination="2iy-PT-cH5" id="qMa-Di-2sF"/>
                 <outlet property="permissionsButton" destination="045-Ih-Tf7" id="7A2-sI-Q01"/>
+                <outlet property="showNamesButton" destination="IJY-1K-iQW" id="MnU-dh-ORS"/>
                 <outlet property="statusMenu" destination="Xfq-v7-Hh9" id="IVL-Qf-J99"/>
             </connections>
         </customObject>
@@ -42,7 +43,7 @@
                         <fragment content="Add new...">
                             <attributes>
                                 <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                <font key="NSFont" metaFont="label" size="11"/>
+                                <font key="NSFont" metaFont="controlContent" size="11"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -64,6 +65,12 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="SqQ-gW-5db"/>
+                            <menuItem title="Show names" id="IJY-1K-iQW">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showNamesClicked:" target="dok-4Z-Dc3" id="QGe-29-Ogk"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Change secret..." keyEquivalent="," id="UPw-mj-LC4">
                                 <connections>
                                     <action selector="changeSecret:" target="dok-4Z-Dc3" id="Heu-pl-tvM"/>

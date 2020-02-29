@@ -10,6 +10,14 @@ private extension HotKey {
   }
 }
 
+extension NSView {
+  func addSubviews(_ subviews: [NSView]) {
+    for subview in subviews {
+      self.addSubview(subview)
+    }
+  }
+}
+
 let statusItem = NSStatusBar.system.statusItem(withLength: 22)
 
 var currentlySelectedSeed:  Int  {
@@ -74,6 +82,14 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     showAlert()
   }
   
+  var buttonList : [NSButton] = []
+  
+  @objc func buttonPressed(_ sender: NSButton) {
+      buttonList.forEach {
+          $0.state = $0 == sender ? .on : .off
+      }
+  }
+  
   func showAlert() {
     if otpInstances.isEmpty {
       print("otpInstances is empty")
@@ -91,14 +107,60 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     alert.addButton(withTitle: "Cancel")
     alert.addButton(withTitle: "Delete secret from disk")
     
-    let textfield = EditableNSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 19))
+    let textfield = EditableNSTextField(frame: NSRect(x: 0, y: 60, width: 200, height: 19))
     textfield.alignment = .center
     textfield.placeholderString = "AADEM4YUY5GYZHHP"
     textfield.maximumNumberOfLines = 1;
     textfield.isBordered = false
     textfield.font = .systemFont(ofSize: 16)
     textfield.backgroundColor = .windowBackgroundColor
-    alert.accessoryView = textfield
+    
+    let nameView = NSView(frame: NSRect(x: 0, y: 30, width: 200, height: 20))
+    
+    let nameTitle = NSTextField(frame: NSRect(x: 0, y: 0, width: 50, height: 18))
+    nameTitle.stringValue = "Name: "
+    nameTitle.isEditable = false
+    nameTitle.isBordered = false
+    nameTitle.font = .systemFont(ofSize: 13)
+    nameTitle.backgroundColor = .windowBackgroundColor
+    
+    let nameField = EditableNSTextField(frame: NSRect(x: 50, y: 0, width: 150, height: 20))
+    nameField.placeholderString = "Account 1"
+    nameField.maximumNumberOfLines = 1;
+    nameField.isBordered = true
+    nameField.font = .systemFont(ofSize: 13)
+    nameField.backgroundColor = .windowBackgroundColor
+    
+    nameView.addSubviews([nameTitle, nameField])
+    
+    let radioView = NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 20))
+    
+    let radioTitle = NSTextField(frame: NSRect(x: 0, y: 0, width: 50, height: 18))
+    radioTitle.stringValue = "Digits: "
+    radioTitle.isEditable = false
+    radioTitle.isBordered = false
+    radioTitle.font = .systemFont(ofSize: 13)
+    radioTitle.backgroundColor = .windowBackgroundColor
+
+    let radioButtonSix = NSButton(radioButtonWithTitle: "6", target: self, action: #selector(buttonPressed))
+    radioButtonSix.setFrameOrigin(NSPoint(x: 50, y: 0))
+    buttonList.append(radioButtonSix)
+    let radioButtonSeven = NSButton(radioButtonWithTitle: "7", target: self, action: #selector(buttonPressed))
+    radioButtonSeven.setFrameOrigin(NSPoint(x: 100, y: 0))
+    buttonList.append(radioButtonSeven)
+    let radioButtonEight = NSButton(radioButtonWithTitle: "8", target: self, action: #selector(buttonPressed))
+    radioButtonEight.setFrameOrigin(NSPoint(x: 150, y: 0))
+    buttonList.append(radioButtonEight)
+    
+    let radioButtons = [radioButtonSix, radioButtonSeven, radioButtonEight]
+
+    radioView.addSubviews(radioButtons)
+    radioView.addSubview(radioTitle)
+    
+    let newView = NSView(frame: NSRect(x: 0, y: 0, width: 200, height: 100))
+    newView.addSubviews([textfield, nameView, radioView])
+    
+    alert.accessoryView = newView
     
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
       textfield.becomeFirstResponder()
@@ -107,6 +169,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     let previousSecret = currentlySelectedInstance.secret
     if !previousSecret.isEmpty {
       textfield.stringValue = previousSecret
+    }
+    
+    let previousName = currentlySelectedInstance.name
+    if !previousName.isEmpty {
+      nameField.stringValue = previousName
+    }
+    
+    let previousDigits = currentlySelectedInstance.digits
+    for sub in radioButtons {
+      if sub.title == String(previousDigits) {
+        sub.state = .on
+      }
     }
     
     let response = alert.runModal()
@@ -118,6 +192,15 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         removeInstance(currentlySelectedInstance)
       } else {
         currentlySelectedInstance.secret = value.condenseWhitespace()
+        
+        let name = nameField.stringValue
+        currentlySelectedInstance.name = name.isEmpty ? "Account \(otpInstances.count)" : name.condenseWhitespace()
+        
+        for sub in radioButtons {
+          if sub.state == .on {
+            currentlySelectedInstance.digits = Int(sub.title)!
+          }
+        }
       }
     } else if response == .alertSecondButtonReturn {
       print("Pressed Cancel")
@@ -127,6 +210,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     } else if response == .alertThirdButtonReturn {
       print("Pressed Delete secret")
       currentlySelectedInstance.secret = ""
+      currentlySelectedInstance.name = ""
       currentlySelectedInstance.token = ""
       currentlySelectedInstance.button?.toolTip = ""
       removeInstance(currentlySelectedInstance)
@@ -155,7 +239,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
           removeInstance(inst)
           print("removed an instance due to empty secret")
         } else {
-          let newBunch = [inst.secret, "Account \(otpInstances.count)", 6] as [Any];
+          let newBunch = [inst.secret, inst.name, inst.digits] as [Any];
           secrets.append(newBunch)
         }
       }
@@ -429,6 +513,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     }
   }
   
+  @IBOutlet weak var showNamesButton: NSMenuItem!
+  @IBAction func showNamesClicked(_ sender: NSMenuItem) {
+    defaults.boolToggle("showNames")
+    initializeInstances()
+  }
+  
   @IBOutlet weak var enterAfterAutoPasteButton: NSMenuItem!
   @IBAction func enterAfterAutoPasteClicked(_ sender: NSMenuItem) {
     defaults.boolToggle("enterAfterAutoPaste")
@@ -437,6 +527,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   
   func menuNeedsUpdate(_ menu: NSMenu) {
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
+    showNamesButton.state.by(defaults.bool(forKey: "showNames"))
     hotkeyButton.state.by(defaults.bool(forKey: "pasteOnHotkey"))
     pasteOnClickButton.state.by(defaults.bool(forKey: "pasteOnClick"))
     pasteOnDoubleClickButton.state.by(defaults.bool(forKey: "pasteOnDoubleClick"))

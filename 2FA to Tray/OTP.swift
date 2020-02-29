@@ -44,7 +44,8 @@ class OTP {
         self.token = token
         self.button?.toolTip = token
         self.button?.appearsDisabled = false
-        self.displayItem?.title = token
+        let showNames = defaults.bool(forKey: "showNames")
+        self.displayItem?.title = showNames ? "\(token) · \(self.name)" : token
         self.displayItem?.isHidden = false
         self.displayItem?.isEnabled = true
       }
