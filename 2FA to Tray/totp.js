@@ -1821,8 +1821,8 @@ var SUPPORTED_ALGS = 4 | 2 | 1;
     };
 }(this));
 
-var otp = function(secret) {
-    var totp = new window.jsOTP.totp();
+var otp = function(secret, digits = null) {
+    var totp = new window.jsOTP.totp(null, digits);
     var timeCode = totp.getOtp(secret);
     return timeCode;
 }

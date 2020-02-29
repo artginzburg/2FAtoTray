@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3126D6002409FC3000DBD968 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D5FF2409FC3000DBD968 /* Clipboard.swift */; };
+		3126D6022409FEC300DBD968 /* EditableNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D6012409FEC300DBD968 /* EditableNSTextField.swift */; };
+		3126D6042409FFF700DBD968 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D6032409FFF700DBD968 /* OTP.swift */; };
+		3126D606240A00A800DBD968 /* String+condenseWhitespace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D605240A00A800DBD968 /* String+condenseWhitespace.swift */; };
+		3126D608240A013400DBD968 /* NSControl_StateValue+toggle+by.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D607240A013400DBD968 /* NSControl_StateValue+toggle+by.swift */; };
+		3126D60A240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D609240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift */; };
+		3126D60C240A043200DBD968 /* UserDefaults+boolToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D60B240A043200DBD968 /* UserDefaults+boolToggle.swift */; };
 		313F4DB523E00DC40086E836 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 313F4DB423E00DC40086E836 /* HotKey */; };
 		3148B57923DE260D0075A192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B57823DE260D0075A192 /* AppDelegate.swift */; };
 		3148B57B23DE260F0075A192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57A23DE260F0075A192 /* Assets.xcassets */; };
@@ -19,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3126D5FF2409FC3000DBD968 /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
+		3126D6012409FEC300DBD968 /* EditableNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextField.swift; sourceTree = "<group>"; };
+		3126D6032409FFF700DBD968 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
+		3126D605240A00A800DBD968 /* String+condenseWhitespace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+condenseWhitespace.swift"; sourceTree = "<group>"; };
+		3126D607240A013400DBD968 /* NSControl_StateValue+toggle+by.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSControl_StateValue+toggle+by.swift"; sourceTree = "<group>"; };
+		3126D609240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusBarButton+momentaryHighlight.swift"; sourceTree = "<group>"; };
+		3126D60B240A043200DBD968 /* UserDefaults+boolToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+boolToggle.swift"; sourceTree = "<group>"; };
 		3148B57523DE260D0075A192 /* 2FA to Tray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2FA to Tray.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3148B57823DE260D0075A192 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3148B57A23DE260F0075A192 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,12 +82,19 @@
 		3148B57723DE260D0075A192 /* 2FA to Tray */ = {
 			isa = PBXGroup;
 			children = (
+				3126D607240A013400DBD968 /* NSControl_StateValue+toggle+by.swift */,
+				3126D605240A00A800DBD968 /* String+condenseWhitespace.swift */,
+				3126D6032409FFF700DBD968 /* OTP.swift */,
+				3126D6012409FEC300DBD968 /* EditableNSTextField.swift */,
+				3126D5FF2409FC3000DBD968 /* Clipboard.swift */,
+				3126D60B240A043200DBD968 /* UserDefaults+boolToggle.swift */,
+				3126D609240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift */,
 				3148B57823DE260D0075A192 /* AppDelegate.swift */,
 				3148B58623DE2A700075A192 /* StatusMenuController.swift */,
-				3148B57A23DE260F0075A192 /* Assets.xcassets */,
 				3148B57C23DE260F0075A192 /* MainMenu.xib */,
 				31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */,
 				31E0DC8923DE374900AC1230 /* totp.js */,
+				3148B57A23DE260F0075A192 /* Assets.xcassets */,
 				3148B57F23DE260F0075A192 /* Info.plist */,
 				3148B58023DE260F0075A192 /* 2FAtoTray.entitlements */,
 			);
@@ -221,7 +242,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				31E0DC8A23DE374900AC1230 /* SwiftyTimer.swift in Sources */,
+				3126D608240A013400DBD968 /* NSControl_StateValue+toggle+by.swift in Sources */,
+				3126D60C240A043200DBD968 /* UserDefaults+boolToggle.swift in Sources */,
 				3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */,
+				3126D60A240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift in Sources */,
+				3126D6022409FEC300DBD968 /* EditableNSTextField.swift in Sources */,
+				3126D6042409FFF700DBD968 /* OTP.swift in Sources */,
+				3126D606240A00A800DBD968 /* String+condenseWhitespace.swift in Sources */,
+				3126D6002409FC3000DBD968 /* Clipboard.swift in Sources */,
 				3148B57923DE260D0075A192 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +396,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R2294BC6J8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
@@ -376,7 +404,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.5;
+				MARKETING_VERSION = 1.4.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -393,7 +421,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = R2294BC6J8;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "2FA to Tray/Info.plist";
@@ -401,7 +429,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.5;
+				MARKETING_VERSION = 1.4.7;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dafuqtor.2FAtoTray;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

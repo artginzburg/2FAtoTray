@@ -1,11 +1,3 @@
-//
-//  StatusMenuController.swift
-//  2FA to Tray
-//
-//  Created by Arthur Ginzburg on 26.01.2020.
-//  Copyright © 2020 DaFuqtor. All rights reserved.
-//
-
 import Cocoa
 
 import HotKey
@@ -108,7 +100,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     textfield.backgroundColor = .windowBackgroundColor
     alert.accessoryView = textfield
     
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
       textfield.becomeFirstResponder()
     }
     
@@ -151,7 +143,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   }
   
   func reinitializeKeychain() {
-    var secrets: [String] = []
+    var secrets: [Any] = []
     
     print("QTY of instances: \(otpInstances.count)")
     
@@ -163,7 +155,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
           removeInstance(inst)
           print("removed an instance due to empty secret")
         } else {
-          secrets.append(inst.secret)
+          let newBunch = [inst.secret, "Account \(otpInstances.count)", 6] as [Any];
+          secrets.append(newBunch)
         }
       }
       print(secrets)
@@ -252,12 +245,19 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         
         var newInstIndex = 0
         
-        for secret in dataArray {
-          print("\(secret) will be initialized")
-          let theSecret = (secret as! String).condenseWhitespace()
+        for bunch in dataArray {
+          let theBunch = (bunch as! Array<Any>)
+          
+          let theSecret = (theBunch[0] as! String).condenseWhitespace()
+          let theName = (theBunch[1] as! String).condenseWhitespace()
+          let theLength = theBunch[2] as! Int
+          
+          print("\(theSecret) will be initialized")
           
           let newOtpInstance = OTP()
           newOtpInstance.secret = theSecret
+          newOtpInstance.name = theName
+          newOtpInstance.digits = theLength
           
           newOtpInstance.button = statusItem.button
           
@@ -306,14 +306,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
           self.tryToAddInstance()
           return
         }
-        button.highlight(true)
+        button.momentaryHighlight()
         otpInstances[currentlySelectedSeed].copy()
         if defaults.bool(forKey: "pasteOnClick") {
           clipboard.paste()
           self.enterAfterAutoPaste()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-          button.highlight(false)
         }
         if (NSApp.currentEvent?.clickCount == 2) {
           if defaults.bool(forKey: "pasteOnDoubleClick") {
