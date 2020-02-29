@@ -330,7 +330,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         var newInstIndex = 0
         
         for bunch in dataArray {
-          let theBunch = (bunch as! Array<Any>)
+          let theBunch = (bunch is String) ? [bunch, "Account", 6] as [Any] : (bunch as! Array<Any>)
           
           let theSecret = (theBunch[0] as! String).condenseWhitespace()
           let theName = (theBunch[1] as! String).condenseWhitespace()
