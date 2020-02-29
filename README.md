@@ -6,6 +6,7 @@
 	</p>
 	<br>
 	<br>
+	<a href="https://www.producthunt.com/posts/2fa-to-tray?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-2fa-to-tray"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=185430&theme=light" alt="2FA to Tray - The missing 2FA manager for macOS. | Product Hunt Embed" style="width: 250px; height: 54px;" width="250px" height="54px" /></a>
 	<br>
 	<p align="right">
 		<sup>*</sup> or with a <b>HotKey</b>
