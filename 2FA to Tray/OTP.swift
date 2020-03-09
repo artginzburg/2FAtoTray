@@ -60,7 +60,7 @@ class OTP {
   }
   
   func copy() {
-    clipboard.copy(self.token)
+    Clipboard.shared.copy(self.token)
     print("copied the token")
   }
 }

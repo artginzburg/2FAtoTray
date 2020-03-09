@@ -20,6 +20,7 @@
 		3148B57E23DE260F0075A192 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57C23DE260F0075A192 /* MainMenu.xib */; };
 		3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B58623DE2A700075A192 /* StatusMenuController.swift */; };
 		3152B18723DF762300B8FA7E /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3152B18623DF762300B8FA7E /* KeychainAccess */; };
+		3179E81D240B25DA0070C478 /* MouseHandlerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3179E81C240B25DA0070C478 /* MouseHandlerView.swift */; };
 		31E0DC8A23DE374900AC1230 /* SwiftyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */; };
 		31E0DC8B23DE374900AC1230 /* totp.js in Resources */ = {isa = PBXBuildFile; fileRef = 31E0DC8923DE374900AC1230 /* totp.js */; };
 		40AEECBBC8958A3FC40BD381 /* Pods_2FA_to_Tray.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D368B2DE27131740CA97301 /* Pods_2FA_to_Tray.framework */; };
@@ -40,6 +41,7 @@
 		3148B57F23DE260F0075A192 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3148B58023DE260F0075A192 /* 2FAtoTray.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 2FAtoTray.entitlements; sourceTree = "<group>"; };
 		3148B58623DE2A700075A192 /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		3179E81C240B25DA0070C478 /* MouseHandlerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MouseHandlerView.swift; sourceTree = "<group>"; };
 		31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimer.swift; sourceTree = "<group>"; };
 		31E0DC8923DE374900AC1230 /* totp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = totp.js; sourceTree = "<group>"; };
 		7103E84D3F79ED69F3DD35F8 /* Pods-2FA to Tray.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2FA to Tray.release.xcconfig"; path = "Target Support Files/Pods-2FA to Tray/Pods-2FA to Tray.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				3126D5FF2409FC3000DBD968 /* Clipboard.swift */,
 				3148B57823DE260D0075A192 /* AppDelegate.swift */,
 				3148B58623DE2A700075A192 /* StatusMenuController.swift */,
+				3179E81C240B25DA0070C478 /* MouseHandlerView.swift */,
 				3148B57C23DE260F0075A192 /* MainMenu.xib */,
 				31E0DC8923DE374900AC1230 /* totp.js */,
 				3148B57A23DE260F0075A192 /* Assets.xcassets */,
@@ -256,6 +259,7 @@
 				3126D60A240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift in Sources */,
 				3126D6022409FEC300DBD968 /* EditableNSTextField.swift in Sources */,
 				3126D6042409FFF700DBD968 /* OTP.swift in Sources */,
+				3179E81D240B25DA0070C478 /* MouseHandlerView.swift in Sources */,
 				3126D606240A00A800DBD968 /* String+condenseWhitespace.swift in Sources */,
 				3126D6002409FC3000DBD968 /* Clipboard.swift in Sources */,
 				3148B57923DE260D0075A192 /* AppDelegate.swift in Sources */,

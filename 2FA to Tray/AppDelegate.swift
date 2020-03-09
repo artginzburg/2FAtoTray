@@ -6,8 +6,6 @@ import KeychainAccess
 
 let keychain = Keychain(service: Bundle.main.bundleIdentifier!)
 
-let clipboard = Clipboard()
-
 var otpInstances: [OTP] = []
 
 @NSApplicationMain

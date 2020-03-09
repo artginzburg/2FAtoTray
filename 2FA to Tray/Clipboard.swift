@@ -2,6 +2,7 @@ import AppKit
 import Carbon
 
 class Clipboard {
+  public static let shared = Clipboard()
   private let pasteboard = NSPasteboard.general
   
   func copy(_ string: String) {

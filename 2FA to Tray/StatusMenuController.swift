@@ -269,28 +269,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     } catch let error { print(error) }
   }
   
-  class mouseHandlerView: NSView {
-    
-    var onLeftMouseDown: (()->())? = nil
-    
-    override func mouseDown(with event: NSEvent) {
-      onLeftMouseDown == nil ? super.mouseDown(with: event) : onLeftMouseDown!()
-    }
-    
-    var onRightMouseDown: (()->())? = nil
-    
-    override func rightMouseDown(with event: NSEvent) {
-      onRightMouseDown == nil ? super.rightMouseDown(with: event) : onRightMouseDown!()
-    }
-    
-    var onOtherMouseDown: (()->())? = nil
-    
-    override func otherMouseDown(with event: NSEvent) {
-      onOtherMouseDown == nil ? super.otherMouseDown(with: event) : onOtherMouseDown!()
-    }
-    
-  }
-  
   @objc func tokenDisplayClicked(_ sender: NSMenuItem) {
     currentlySelectedSeed = statusMenu.index(of: sender) - 1
     if !otpInstances.isEmpty {
@@ -382,28 +360,31 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         tryToAddInstance()
       }
       
-      
-      let mouseView = mouseHandlerView(frame: button.frame)
+      let mouseView = MouseHandlerView(frame: button.frame)
       
       mouseView.onLeftMouseDown = {
+        button.highlight(true)
         if otpInstances.isEmpty {
           self.tryToAddInstance()
           return
         }
-        button.momentaryHighlight()
         otpInstances[currentlySelectedSeed].copy()
         if defaults.bool(forKey: "pasteOnClick") {
-          clipboard.paste()
+          Clipboard.shared.paste()
           self.enterAfterAutoPaste()
         }
         if (NSApp.currentEvent?.clickCount == 2) {
           if defaults.bool(forKey: "pasteOnDoubleClick") {
-            clipboard.paste()
+            Clipboard.shared.paste()
             self.enterAfterAutoPaste()
           } else {
             self.showAlert()
           }
         }
+      }
+      
+      mouseView.onLeftMouseUp = {
+        button.highlight(false)
       }
       
       mouseView.onRightMouseDown = {
@@ -416,7 +397,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       hotKey.handleKeyDown {
         otpInstances[currentlySelectedSeed].copy()
         if defaults.bool(forKey: "pasteOnHotkey") {
-          clipboard.paste()
+          Clipboard.shared.paste()
           self.enterAfterAutoPaste()
         }
       }
@@ -446,7 +427,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       return
     }
     otpInstances[currentlySelectedSeed].copy()
-    clipboard.paste()
+    Clipboard.shared.paste()
   }
   @IBAction func addNewClicked(_ sender: NSMenuItem) {
     tryToAddInstance()
@@ -459,7 +440,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     if !AXIsProcessTrusted() {
       return
     }
-    clipboard.checkAccessibilityPermissions()
+    Clipboard.shared.checkAccessibilityPermissions()
     
     DispatchQueue.main.async {
       let keyCode = UInt16(kVK_Return)
