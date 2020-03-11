@@ -391,6 +391,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         button.performClick(NSApp.currentEvent)
       }
       
+      mouseView.onPressureChange = {
+        if NSApp.currentEvent!.stage == 2 {
+          button.performClick(NSApp.currentEvent)
+        }
+      }
+      
       button.addSubview(mouseView)
       
       let hotKey = HotKey(key: .g, modifiers: [.command, .option])

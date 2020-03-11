@@ -26,4 +26,10 @@ class MouseHandlerView: NSView {
     onOtherMouseDown == nil ? super.otherMouseDown(with: event) : onOtherMouseDown!()
   }
   
+  var onPressureChange: (()->())? = nil
+  
+  override func pressureChange(with event: NSEvent) {
+    onPressureChange == nil ? super.pressureChange(with: event) : onPressureChange!()
+  }
+  
 }
