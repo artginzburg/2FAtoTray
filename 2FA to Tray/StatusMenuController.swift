@@ -364,31 +364,42 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       
       mouseView.onLeftMouseDown = {
         button.highlight(true)
-        if otpInstances.isEmpty {
-          self.tryToAddInstance()
-          return
-        }
-        otpInstances[currentlySelectedSeed].copy()
-        if defaults.bool(forKey: "pasteOnClick") {
-          Clipboard.shared.paste()
-          self.enterAfterAutoPaste()
-        }
-        if (NSApp.currentEvent?.clickCount == 2) {
-          if defaults.bool(forKey: "pasteOnDoubleClick") {
-            Clipboard.shared.paste()
-            self.enterAfterAutoPaste()
-          } else {
-            self.showAlert()
-          }
+        
+        if NSApp.isOptionKeyDown {
+          button.performClick(NSApp.currentEvent)
         }
       }
       
       mouseView.onLeftMouseUp = {
         button.highlight(false)
+        
+        if !NSApp.isCommandKeyDown {
+        
+          if otpInstances.isEmpty {
+            self.tryToAddInstance()
+            return
+          }
+          otpInstances[currentlySelectedSeed].copy()
+          if defaults.bool(forKey: "pasteOnClick") {
+            Clipboard.shared.paste()
+            self.enterAfterAutoPaste()
+          }
+          if (NSApp.currentEvent?.clickCount == 2) {
+            if defaults.bool(forKey: "pasteOnDoubleClick") {
+              Clipboard.shared.paste()
+              self.enterAfterAutoPaste()
+            } else {
+              self.showAlert()
+            }
+          }
+          
+        }
       }
       
-      mouseView.onRightMouseDown = {
-        button.performClick(NSApp.currentEvent)
+      mouseView.onOtherMouseDown = {
+        otpInstances[currentlySelectedSeed].copy()
+        Clipboard.shared.paste()
+        self.enterAfterAutoPaste()
       }
       
       mouseView.onPressureChange = {
@@ -457,8 +468,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       
       let keyDown = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: true)
       let keyUp = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: false)
-      keyDown?.flags = .maskCommand
-      keyUp?.flags = .maskCommand
       keyDown?.post(tap: .cgAnnotatedSessionEventTap)
       keyUp?.post(tap: .cgAnnotatedSessionEventTap)
     }

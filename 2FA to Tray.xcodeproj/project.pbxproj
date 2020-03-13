@@ -15,6 +15,7 @@
 		3126D60A240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D609240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift */; };
 		3126D60C240A043200DBD968 /* UserDefaults+boolToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D60B240A043200DBD968 /* UserDefaults+boolToggle.swift */; };
 		313F4DB523E00DC40086E836 /* HotKey in Frameworks */ = {isa = PBXBuildFile; productRef = 313F4DB423E00DC40086E836 /* HotKey */; };
+		31416E10241C3FA0006F2B27 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31416E0F241C3FA0006F2B27 /* util.swift */; };
 		3148B57923DE260D0075A192 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148B57823DE260D0075A192 /* AppDelegate.swift */; };
 		3148B57B23DE260F0075A192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57A23DE260F0075A192 /* Assets.xcassets */; };
 		3148B57E23DE260F0075A192 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3148B57C23DE260F0075A192 /* MainMenu.xib */; };
@@ -34,6 +35,7 @@
 		3126D607240A013400DBD968 /* NSControlStateValue+toggle+by.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSControlStateValue+toggle+by.swift"; sourceTree = "<group>"; };
 		3126D609240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStatusBarButton+momentaryHighlight.swift"; sourceTree = "<group>"; };
 		3126D60B240A043200DBD968 /* UserDefaults+boolToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+boolToggle.swift"; sourceTree = "<group>"; };
+		31416E0F241C3FA0006F2B27 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		3148B57523DE260D0075A192 /* 2FA to Tray.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "2FA to Tray.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3148B57823DE260D0075A192 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3148B57A23DE260F0075A192 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				3126D5FF2409FC3000DBD968 /* Clipboard.swift */,
 				3148B57823DE260D0075A192 /* AppDelegate.swift */,
 				3148B58623DE2A700075A192 /* StatusMenuController.swift */,
+				31416E0F241C3FA0006F2B27 /* util.swift */,
 				3179E81C240B25DA0070C478 /* MouseHandlerView.swift */,
 				3148B57C23DE260F0075A192 /* MainMenu.xib */,
 				31E0DC8923DE374900AC1230 /* totp.js */,
@@ -255,6 +258,7 @@
 				31E0DC8A23DE374900AC1230 /* SwiftyTimer.swift in Sources */,
 				3126D608240A013400DBD968 /* NSControlStateValue+toggle+by.swift in Sources */,
 				3126D60C240A043200DBD968 /* UserDefaults+boolToggle.swift in Sources */,
+				31416E10241C3FA0006F2B27 /* util.swift in Sources */,
 				3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */,
 				3126D60A240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift in Sources */,
 				3126D6022409FEC300DBD968 /* EditableNSTextField.swift in Sources */,
