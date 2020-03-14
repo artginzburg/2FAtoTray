@@ -418,6 +418,8 @@ class StatusMenuController: NSObject, NSMenuDelegate {
           self.enterAfterAutoPaste()
         }
       }
+      
+      statusMenu.item(at: 4)?.addHiddenKeyEquivalent("=")
     }
     
     permissionsButton.toolTip = "Open Accessibility Preferences"
