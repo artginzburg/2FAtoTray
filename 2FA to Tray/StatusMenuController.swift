@@ -1,15 +1,5 @@
 import Cocoa
 
-import HotKey
-private extension HotKey {
-  func handleKeyDown(_ handler: @escaping (() -> Void)) {
-    keyDownHandler = {
-      handler()
-      self.handleKeyDown(handler)
-    }
-  }
-}
-
 extension NSView {
   func addSubviews(_ subviews: [NSView]) {
     for subview in subviews {
@@ -59,6 +49,29 @@ func reinitializeStates(_ select: Int) {
   turnAllStatesOff()
   setStateForSelected(select)
   print("Newly selected instance: \(select)")
+}
+
+func enterAfterAutoPaste() {
+  if !defaults.bool(forKey: "enterAfterAutoPaste") {
+    return
+  }
+  if !AXIsProcessTrusted() {
+    return
+  }
+  Clipboard.shared.checkAccessibilityPermissions()
+  
+  DispatchQueue.main.async {
+    let keyCode = UInt16(kVK_Return)
+    let source = CGEventSource(stateID: .combinedSessionState)
+    // Disable local keyboard events while pasting
+    source?.setLocalEventsFilterDuringSuppressionState([.permitLocalMouseEvents, .permitSystemDefinedEvents],
+                                                       state: .eventSuppressionStateSuppressionInterval)
+    
+    let keyDown = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: true)
+    let keyUp = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: false)
+    keyDown?.post(tap: .cgAnnotatedSessionEventTap)
+    keyUp?.post(tap: .cgAnnotatedSessionEventTap)
+  }
 }
 
 import LoginServiceKit
@@ -382,12 +395,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
           otpInstances[currentlySelectedSeed].copy()
           if defaults.bool(forKey: "pasteOnClick") {
             Clipboard.shared.paste()
-            self.enterAfterAutoPaste()
+            enterAfterAutoPaste()
           }
           if (NSApp.currentEvent?.clickCount == 2) {
             if defaults.bool(forKey: "pasteOnDoubleClick") {
               Clipboard.shared.paste()
-              self.enterAfterAutoPaste()
+              enterAfterAutoPaste()
             } else {
               self.showAlert()
             }
@@ -399,7 +412,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       mouseView.onOtherMouseDown = {
         otpInstances[currentlySelectedSeed].copy()
         Clipboard.shared.paste()
-        self.enterAfterAutoPaste()
+        enterAfterAutoPaste()
       }
       
       mouseView.onPressureChange = {
@@ -409,15 +422,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       }
       
       button.addSubview(mouseView)
-      
-      let hotKey = HotKey(key: .g, modifiers: [.command, .option])
-      hotKey.handleKeyDown {
-        otpInstances[currentlySelectedSeed].copy()
-        if defaults.bool(forKey: "pasteOnHotkey") {
-          Clipboard.shared.paste()
-          self.enterAfterAutoPaste()
-        }
-      }
       
       statusMenu.item(at: 4)?.addHiddenKeyEquivalent("=")
     }
@@ -450,29 +454,6 @@ class StatusMenuController: NSObject, NSMenuDelegate {
   }
   @IBAction func addNewClicked(_ sender: NSMenuItem) {
     tryToAddInstance()
-  }
-  
-  func enterAfterAutoPaste() {
-    if !defaults.bool(forKey: "enterAfterAutoPaste") {
-      return
-    }
-    if !AXIsProcessTrusted() {
-      return
-    }
-    Clipboard.shared.checkAccessibilityPermissions()
-    
-    DispatchQueue.main.async {
-      let keyCode = UInt16(kVK_Return)
-      let source = CGEventSource(stateID: .combinedSessionState)
-      // Disable local keyboard events while pasting
-      source?.setLocalEventsFilterDuringSuppressionState([.permitLocalMouseEvents, .permitSystemDefinedEvents],
-                                                         state: .eventSuppressionStateSuppressionInterval)
-      
-      let keyDown = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: true)
-      let keyUp = CGEvent(keyboardEventSource: source, virtualKey: keyCode, keyDown: false)
-      keyDown?.post(tap: .cgAnnotatedSessionEventTap)
-      keyUp?.post(tap: .cgAnnotatedSessionEventTap)
-    }
   }
   
   @IBOutlet weak var hotkeyButton: NSMenuItem!

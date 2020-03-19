@@ -1,4 +1,5 @@
 import Cocoa
+import HotKey
 
 let defaults = UserDefaults.standard
 
@@ -10,6 +11,31 @@ var otpInstances: [OTP] = []
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+  func applicationDidFinishLaunching(_ notification: Notification) {
+    hotKey = HotKey(key: .g, modifiers: [.command, .option])
+  }
+  
+  public var hotKey: HotKey? {
+    didSet {
+      guard let hotKey = hotKey else {
+        return
+      }
+      
+      hotKey.keyDownHandler = {
+        statusItem.button!.isHighlighted = true
+        otpInstances[currentlySelectedSeed].copy()
+        if defaults.bool(forKey: "pasteOnHotkey") {
+          Clipboard.shared.paste()
+          enterAfterAutoPaste()
+        }
+      }
+      
+      hotKey.keyUpHandler = {
+        statusItem.button!.isHighlighted = false
+      }
+    }
+  }
+  
   func applicationShouldHandleReopen(_ sender: NSApplication,
                                      hasVisibleWindows flag: Bool) -> Bool
   {
@@ -17,9 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       statusItem.button!.performClick(NSApp.currentEvent)
     } else {
       otpInstances[currentlySelectedSeed].copy()
-      if let button = statusItem.button {
-        button.momentaryHighlight()
-      }
+      statusItem.button!.momentaryHighlight()
     }
     return true
   }
