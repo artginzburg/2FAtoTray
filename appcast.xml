@@ -10,7 +10,8 @@
       <description>
         <![CDATA[
           <ul>
-            <li>Added support for app autoupdate.</li>
+            <li>Added support for app autoupdate.
+            	(Plus, "Check for updates" in Preferences)</li>
             <li>Dropdown to the status menu by force-clicking on status icon
             	(Handful when you already clicked the icon but realized that you have the wrong account selected, so you put a bit more force and select the right one)</li>
             <li>Open the status menu with <kbd>OPTION (⌥)</kbd> + <kbd>Click</kbd> on status icon</li>

@@ -1,4 +1,5 @@
 import Cocoa
+import Sparkle
 
 extension NSView {
   func addSubviews(_ subviews: [NSView]) {
@@ -490,6 +491,10 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     } else {
       LoginServiceKit.addLoginItems()
     }
+  }
+  
+  @IBAction func checkForUpdatesClicked(_ sender: NSMenuItem) {
+    SUUpdater.shared()?.checkForUpdates(self)
   }
   
   @IBOutlet weak var showNamesButton: NSMenuItem!
