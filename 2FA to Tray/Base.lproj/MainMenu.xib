@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="_FA_to_Tray" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="NWf-lJ-uag" customClass="SUUpdater"/>
         <customObject id="dok-4Z-Dc3" customClass="StatusMenuController" customModule="_FA_to_Tray" customModuleProvider="target">
             <connections>
                 <outlet property="enterAfterAutoPasteButton" destination="nHS-EH-W90" id="BUP-dc-N9L"/>
@@ -43,7 +44,7 @@
                         <fragment content="Add new...">
                             <attributes>
                                 <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                <font key="NSFont" metaFont="controlContent" size="11"/>
+                                <font key="NSFont" metaFont="message" size="11"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>

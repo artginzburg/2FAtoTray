@@ -36,5 +36,7 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/DaFuqtor/2FAtoTray/master/appcast.xml</string>
 </dict>
 </plist>
