@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		311A517C24281E7A00811083 /* String+toInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A517B24281E7A00811083 /* String+toInteger.swift */; };
 		3126D6002409FC3000DBD968 /* Clipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D5FF2409FC3000DBD968 /* Clipboard.swift */; };
 		3126D6022409FEC300DBD968 /* EditableNSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D6012409FEC300DBD968 /* EditableNSTextField.swift */; };
 		3126D6042409FFF700DBD968 /* OTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3126D6032409FFF700DBD968 /* OTP.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		311A517B24281E7A00811083 /* String+toInteger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+toInteger.swift"; sourceTree = "<group>"; };
 		3126D5FF2409FC3000DBD968 /* Clipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clipboard.swift; sourceTree = "<group>"; };
 		3126D6012409FEC300DBD968 /* EditableNSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableNSTextField.swift; sourceTree = "<group>"; };
 		3126D6032409FFF700DBD968 /* OTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTP.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				3126D607240A013400DBD968 /* NSControlStateValue+toggle+by.swift */,
 				3126D60B240A043200DBD968 /* UserDefaults+boolToggle.swift */,
 				3126D605240A00A800DBD968 /* String+condenseWhitespace.swift */,
+				311A517B24281E7A00811083 /* String+toInteger.swift */,
 				31E0DC8823DE374900AC1230 /* SwiftyTimer.swift */,
 			);
 			path = Extensions;
@@ -274,6 +277,7 @@
 				3148B58723DE2A700075A192 /* StatusMenuController.swift in Sources */,
 				3126D60A240A035500DBD968 /* NSStatusBarButton+momentaryHighlight.swift in Sources */,
 				3126D6022409FEC300DBD968 /* EditableNSTextField.swift in Sources */,
+				311A517C24281E7A00811083 /* String+toInteger.swift in Sources */,
 				3126D6042409FFF700DBD968 /* OTP.swift in Sources */,
 				3179E81D240B25DA0070C478 /* MouseHandlerView.swift in Sources */,
 				3126D606240A00A800DBD968 /* String+condenseWhitespace.swift in Sources */,

@@ -22,7 +22,12 @@ var currentlySelectedSeed:  Int  {
   }
   set {
     defaults.set(newValue, forKey: "selected")
-    reinitializeStates(newValue)
+    let QTYofInstances = otpInstances.count
+    if newValue + 1 > QTYofInstances {
+      reinitializeStates(QTYofInstances - 1)
+    } else {
+      reinitializeStates(newValue)
+    }
   }
 }
 
@@ -283,17 +288,21 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     } catch let error { print(error) }
   }
   
-  @objc func tokenDisplayClicked(_ sender: NSMenuItem) {
-    currentlySelectedSeed = statusMenu.index(of: sender) - 1
-    if !otpInstances.isEmpty {
-      for instance in otpInstances {
-        if (instance.displayItem != nil) {
-          instance.displayItem?.state = .off
-        }
-      }
-    }
-    sender.state.toggle()
+  func selectAccountByIndex(_ index: Int) {
+    currentlySelectedSeed = index
     otpInstances[currentlySelectedSeed].copy()
+  }
+  
+  func selectAccountBySender(_ sender: NSMenuItem) {
+    selectAccountByIndex(statusMenu.index(of: sender) - 1)
+  }
+  
+  @objc func tokenDisplayClicked(_ sender: NSMenuItem) {
+    selectAccountBySender(sender)
+  }
+  
+  @objc func hiddenSelectItemClicked(_ sender: NSMenuItem) {
+    selectAccountByIndex((sender.identifier?.rawValue.toInteger())! - 1)
   }
   
   func initializeInstances() {
@@ -427,8 +436,18 @@ class StatusMenuController: NSObject, NSMenuDelegate {
       statusMenu.item(at: 4)?.addHiddenKeyEquivalent("=")
     }
     
-    permissionsButton.toolTip = "Open Accessibility Preferences"
-    hotkeyButton.toolTip = "⌥⌘G"
+    var countHiddenSelectItems = 1
+    while countHiddenSelectItems <= 9 {
+      let newHiddenSelectItem = NSMenuItem(title: "Select \(countHiddenSelectItems)", action: #selector(hiddenSelectItemClicked), keyEquivalent: "\(countHiddenSelectItems)")
+      newHiddenSelectItem.allowsKeyEquivalentWhenHidden = true
+      newHiddenSelectItem.isEnabled = true
+      newHiddenSelectItem.isHidden = true
+      newHiddenSelectItem.target = self
+      newHiddenSelectItem.keyEquivalentModifierMask = .command
+      newHiddenSelectItem.identifier = NSUserInterfaceItemIdentifier("\(countHiddenSelectItems)")
+      statusMenu.addItem(newHiddenSelectItem)
+      countHiddenSelectItems += 1
+    }
   }
   
   func tryToAddInstance() {

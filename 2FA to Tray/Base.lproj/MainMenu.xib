@@ -45,7 +45,7 @@
                         <fragment content="Add new...">
                             <attributes>
                                 <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                <font key="NSFont" metaFont="label" size="11"/>
+                                <font key="NSFont" metaFont="controlContent" size="11"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -98,7 +98,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Auto-paste" autoenablesItems="NO" id="teo-zT-IQW">
                                     <items>
-                                        <menuItem title="Needs accessibility permissions" offStateImage="NSSmartBadgeTemplate" hidden="YES" id="045-Ih-Tf7">
+                                        <menuItem title="Needs accessibility permissions" offStateImage="NSSmartBadgeTemplate" hidden="YES" toolTip="Open Accessibility Preferences" id="045-Ih-Tf7">
                                             <attributedString key="attributedTitle"/>
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -106,7 +106,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="uXg-bK-Xyf"/>
-                                        <menuItem title="HotKey" id="DFi-8B-prS">
+                                        <menuItem title="HotKey" toolTip="⌥⌘G" id="DFi-8B-prS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="hotkeyButtonClicked:" target="dok-4Z-Dc3" id="L0q-hK-bY2"/>
