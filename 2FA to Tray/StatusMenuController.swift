@@ -497,6 +497,12 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     SUUpdater.shared()?.checkForUpdates(self)
   }
   
+  @IBOutlet weak var automaticUpdatesButton: NSMenuItem!
+  @IBAction func automaticUpdatesClicked(_ sender: NSMenuItem) {
+    SUUpdater.shared()?.automaticallyDownloadsUpdates.toggle()
+  }
+  
+  
   @IBOutlet weak var showNamesButton: NSMenuItem!
   @IBAction func showNamesClicked(_ sender: NSMenuItem) {
     defaults.boolToggle("showNames")
@@ -523,6 +529,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     pasteOnClickButton.isEnabled = isProcessTrusted
     pasteOnDoubleClickButton.isEnabled = isProcessTrusted
     enterAfterAutoPasteButton.isEnabled = isProcessTrusted
+    automaticUpdatesButton.state.by(SUUpdater.shared()!.automaticallyDownloadsUpdates)
   }
 }
 

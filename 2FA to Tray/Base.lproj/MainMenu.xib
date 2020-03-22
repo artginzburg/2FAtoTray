@@ -17,6 +17,7 @@
         <customObject id="NWf-lJ-uag" customClass="SUUpdater"/>
         <customObject id="dok-4Z-Dc3" customClass="StatusMenuController" customModule="_FA_to_Tray" customModuleProvider="target">
             <connections>
+                <outlet property="automaticUpdatesButton" destination="OHl-c3-1NX" id="qfd-xY-azY"/>
                 <outlet property="enterAfterAutoPasteButton" destination="nHS-EH-W90" id="BUP-dc-N9L"/>
                 <outlet property="hotkeyButton" destination="DFi-8B-prS" id="6H7-gH-9hm"/>
                 <outlet property="launchAtLoginButton" destination="RW7-aQ-GXh" id="olQ-Rq-h4H"/>
@@ -44,7 +45,7 @@
                         <fragment content="Add new...">
                             <attributes>
                                 <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                <font key="NSFont" metaFont="message" size="11"/>
+                                <font key="NSFont" metaFont="label" size="11"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -65,13 +66,23 @@
                                     <action selector="launchAtLoginClicked:" target="dok-4Z-Dc3" id="Eb6-Fs-quf"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="SqQ-gW-5db"/>
                             <menuItem title="Check for Updates" id="qqd-XS-mkU">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Menu" id="mZw-Ov-NIB">
+                                    <items>
+                                        <menuItem title="Automatic Updates" id="OHl-c3-1NX">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="automaticUpdatesClicked:" target="dok-4Z-Dc3" id="lFp-HE-heI"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
                                 <connections>
                                     <action selector="checkForUpdatesClicked:" target="dok-4Z-Dc3" id="0W5-zD-0W2"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="SqQ-gW-5db"/>
                             <menuItem title="Show names" id="IJY-1K-iQW">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
