@@ -60,6 +60,17 @@ class OTP {
   }
   
   func copy() {
+    if defaults.bool(forKey: "preserveClipboard") {
+      let item = Clipboard.shared.get()?.last
+      
+      if (item?.types.contains(.string))! {
+        if let data = item!.data(forType: .string) {
+          let encoded = String(data: data, encoding: .utf8)!
+          Clipboard.shared.preservedString = encoded
+        }
+      }
+    }
+    
     Clipboard.shared.copy(self.token)
     print("copied the token")
   }

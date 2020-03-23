@@ -5,6 +5,12 @@ class Clipboard {
   public static let shared = Clipboard()
   private let pasteboard = NSPasteboard.general
   
+  var preservedString: String?
+  
+  func get() -> [NSPasteboardItem]? {
+    pasteboard.pasteboardItems
+  }
+  
   func copy(_ string: String) {
     pasteboard.declareTypes([NSPasteboard.PasteboardType.string], owner: nil)
     pasteboard.setString(string, forType: NSPasteboard.PasteboardType.string)
@@ -29,6 +35,14 @@ class Clipboard {
       keyVUp?.flags = .maskCommand
       keyVDown?.post(tap: .cgAnnotatedSessionEventTap)
       keyVUp?.post(tap: .cgAnnotatedSessionEventTap)
+    }
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+      if defaults.bool(forKey: "preserveClipboard") {
+        if let item = self.preservedString {
+          self.copy(item)
+        }
+      }
     }
   }
   

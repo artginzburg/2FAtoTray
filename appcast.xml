@@ -6,25 +6,24 @@
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
     <item>
-      <title>1.4.9 — Autoupdate and handful menu</title>
+      <title>1.5 — Preserve clipboard, and switch accounts easier</title>
       <description>
         <![CDATA[
           <ul>
-            <li>Added support for app autoupdate.
-            	(Plus, "Check for updates" in Preferences)</li>
-            <li>Dropdown to the status menu by force-clicking on status icon
-            	(Handful when you already clicked the icon but realized that you have the wrong account selected, so you put a bit more force and select the right one)</li>
-            <li>Open the status menu with <kbd>OPTION (⌥)</kbd> + <kbd>Click</kbd> on status icon</li>
-            <li>Hold <kbd>Shift</kbd> while reopening the app (Spotlight action) to open the status menu</li>
+          	<li>Added a preference to preserve clipboard contents after auto-pasting
+          		(Works exclusively with text so far. Turned on by default)</li>
+          	<li>Select accounts in status menu with <kbd>CMD (⌘) + digit</kbd> keys</li>
+            <li>Added a preference for automatically downloading updates. (Preferences > Check for Updates > Automatic updates)
+            	P.S. You still can check for updates manually by clicking the "Check for Updates" submenu item</li>
           </ul>
         ]]>
       </description>
-      <pubDate>2020-03-21</pubDate>
-      <releaseNotesLink>https://github.com/DaFuqtor/2FAtoTray/releases/tag/1.4.9</releaseNotesLink>
+      <pubDate>2020-03-23</pubDate>
+      <releaseNotesLink>https://github.com/DaFuqtor/2FAtoTray/releases/tag/1.5</releaseNotesLink>
       <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
       <enclosure
-        url="https://github.com/DaFuqtor/2FAtoTray/releases/download/1.4.9/2FAtoTray.zip"
-        sparkle:version="1.4.9"
+        url="https://github.com/DaFuqtor/2FAtoTray/releases/download/1.5/2FAtoTray.zip"
+        sparkle:version="1.5"
         length="0"
         type="application/octet-stream"
       />

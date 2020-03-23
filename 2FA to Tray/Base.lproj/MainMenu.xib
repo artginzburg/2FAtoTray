@@ -24,6 +24,7 @@
                 <outlet property="pasteOnClickButton" destination="6CR-IJ-zXp" id="Rtt-mm-SeB"/>
                 <outlet property="pasteOnDoubleClickButton" destination="2iy-PT-cH5" id="qMa-Di-2sF"/>
                 <outlet property="permissionsButton" destination="045-Ih-Tf7" id="7A2-sI-Q01"/>
+                <outlet property="preserveClipboardButton" destination="9lA-KV-tUH" id="pPk-kb-Bh1"/>
                 <outlet property="showNamesButton" destination="IJY-1K-iQW" id="MnU-dh-ORS"/>
                 <outlet property="statusMenu" destination="Xfq-v7-Hh9" id="IVL-Qf-J99"/>
             </connections>
@@ -130,6 +131,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="enterAfterAutoPasteClicked:" target="dok-4Z-Dc3" id="4Jy-2H-RIV"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Preserve Clipboard Contents" id="9lA-KV-tUH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="preserveClipboardClicked:" target="dok-4Z-Dc3" id="ZWn-BD-dgv"/>
                                             </connections>
                                         </menuItem>
                                     </items>

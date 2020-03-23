@@ -534,6 +534,11 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     print("switched enterAfterAutoPaste pref")
   }
   
+  @IBOutlet weak var preserveClipboardButton: NSMenuItem!
+  @IBAction func preserveClipboardClicked(_ sender: NSMenuItem) {
+    defaults.boolToggle("preserveClipboard")
+  }
+  
   func menuNeedsUpdate(_ menu: NSMenu) {
     launchAtLoginButton.state.by(LoginServiceKit.isExistLoginItems())
     showNamesButton.state.by(defaults.bool(forKey: "showNames"))
@@ -541,6 +546,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     pasteOnClickButton.state.by(defaults.bool(forKey: "pasteOnClick"))
     pasteOnDoubleClickButton.state.by(defaults.bool(forKey: "pasteOnDoubleClick"))
     enterAfterAutoPasteButton.state.by(defaults.bool(forKey: "enterAfterAutoPaste"))
+    preserveClipboardButton.state.by(defaults.bool(forKey: "preserveClipboard"))
     
     let isProcessTrusted = AXIsProcessTrusted()
     permissionsButton.isHidden = isProcessTrusted
@@ -548,6 +554,7 @@ class StatusMenuController: NSObject, NSMenuDelegate {
     pasteOnClickButton.isEnabled = isProcessTrusted
     pasteOnDoubleClickButton.isEnabled = isProcessTrusted
     enterAfterAutoPasteButton.isEnabled = isProcessTrusted
+    preserveClipboardButton.isEnabled = isProcessTrusted
     automaticUpdatesButton.state.by(SUUpdater.shared()!.automaticallyDownloadsUpdates)
   }
 }

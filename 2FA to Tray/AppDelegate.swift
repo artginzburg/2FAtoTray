@@ -13,6 +13,10 @@ var otpInstances: [OTP] = []
 class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationDidFinishLaunching(_ notification: Notification) {
     hotKey = HotKey(key: .g, modifiers: [.command, .option])
+    
+    if defaults.object(forKey: "preserveClipboard") == nil {
+        defaults.set(true, forKey: "preserveClipboard")
+    }
   }
   
   public var hotKey: HotKey? {
