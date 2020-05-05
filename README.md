@@ -15,13 +15,17 @@
 
 <img src="screenshot-menu-bar.png" align="left" width="40%">
 
-<p>Click the status icon or <kbd>⌥</kbd><kbd>⌘</kbd><kbd>G</kbd> &nbsp·&nbsp to copy the token</p>
+### Controls
 
-<p>RMB &nbsp·&nbsp to open the menu</p>
+<p> &nbsp·&nbsp  &nbsp·&nbsp  &nbsp·&nbsp </p>
 
-<p>Double click &nbsp·&nbsp to change secret code or paste the token</p>
+<p>Click the status icon or <kbd>⌥</kbd><kbd>⌘</kbd><kbd>G</kbd> &nbsp·&nbsp To copy the token</p>
 
-<p>Reopen (useful with Spotlight) &nbsp·&nbsp to copy the token</p>
+<p>RMB &nbsp·&nbsp To open the menu</p>
+
+<p>Double click &nbsp·&nbsp To change secret code or paste the token</p>
+
+<p>Reopen (useful with Spotlight) &nbsp·&nbsp To copy the token</p>
 
 <br>
 <br>
@@ -29,7 +33,7 @@
 <br>
 <br>
 
-<img align="right" alt="GitHub All Releases" src="https://img.shields.io/github/downloads/dafuqtor/2fatotray/total?color=teal">
+<a href="//github.com/DaFuqtor/2FAtoTray/releases"><img align="right" alt="GitHub All Releases" src="https://img.shields.io/github/downloads/dafuqtor/2fatotray/total?color=teal"></a>
 
 ## Install
 
@@ -46,8 +50,10 @@ brew cask install dafuqtor/tap/2fatotray
 <br>
 
 <h2 align="right">:mag: Usage of the menu</h2>
-<p align="right"><kbd>RMB the status icon</kbd> &nbsp·&nbsp to open the menu</p>
-<p align="right"><kbd>Click a token</kbd> &nbsp·&nbsp to copy it and select it for future interactions (HotKey, status icon click)</p>
+<p align="right"><kbd>RMB the status icon</kbd> &nbsp·&nbsp To open the menu</p>
+<p align="right"><kbd>Click a token</kbd> &nbsp·&nbsp To copy it and select it for future interactions (such as HotKey or status icon click)</p>
+<p align="right"><kbd>Hold your finger after a Force Touch</kbd> &nbsp·&nbsp An account that is currently under the cursor will be selected when you release your finger</p>
+<p align="right">Select accounts with <kbd>CMD (⌘)</kbd>+<kbd>digit key</kbd></p>
 
 <br>
 <br>
@@ -61,7 +67,9 @@ brew cask install dafuqtor/tap/2fatotray
 - Secure
 	> 2FA to Tray uses Apple's [**Keychain Access**](//en.wikipedia.org/wiki/Keychain_(software))
 - Lightweight, fast and native
-- Auto-updates (via Homebrew)
+- Auto-updates
+	> You can still check for updates manually by clicking Preferences > Check for Updates
+  - 2tT will ask you to enable auto-updates on the second launch.
 
 <br>
 <br>
