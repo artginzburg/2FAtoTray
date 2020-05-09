@@ -41,12 +41,12 @@
                         <action selector="pasteTokenClicked:" target="dok-4Z-Dc3" id="C0k-86-o0p"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Add new..." keyEquivalent="+" id="mOb-6m-Qx6">
+                <menuItem title="Add New..." keyEquivalent="+" id="mOb-6m-Qx6">
                     <attributedString key="attributedTitle">
-                        <fragment content="Add new...">
+                        <fragment content="Add New...">
                             <attributes>
                                 <color key="NSColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                <font key="NSFont" metaFont="controlContent" size="11"/>
+                                <font key="NSFont" metaFont="toolTip"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
@@ -84,13 +84,13 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="SqQ-gW-5db"/>
-                            <menuItem title="Show names" id="IJY-1K-iQW">
+                            <menuItem title="Show Names" id="IJY-1K-iQW">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showNamesClicked:" target="dok-4Z-Dc3" id="QGe-29-Ogk"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Change secret..." keyEquivalent="," id="UPw-mj-LC4">
+                            <menuItem title="Change Secret..." keyEquivalent="," id="UPw-mj-LC4">
                                 <connections>
                                     <action selector="changeSecret:" target="dok-4Z-Dc3" id="Heu-pl-tvM"/>
                                 </connections>
@@ -120,14 +120,14 @@
                                                 <action selector="pasteOnClickButtonClicked:" target="dok-4Z-Dc3" id="kHj-o3-iDZ"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Double click" id="2iy-PT-cH5">
+                                        <menuItem title="Double Click" id="2iy-PT-cH5">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="pasteOnDoubleClickButtonClicked:" target="dok-4Z-Dc3" id="SfW-y4-52C"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="tYn-zX-Gl6"/>
-                                        <menuItem title="Press Enter after pasting" id="nHS-EH-W90">
+                                        <menuItem title="Enter After Pasting" toolTip="Automatically press the Return key on Auto-paste" id="nHS-EH-W90">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="enterAfterAutoPasteClicked:" target="dok-4Z-Dc3" id="4Jy-2H-RIV"/>
