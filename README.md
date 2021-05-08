@@ -40,7 +40,7 @@
 ### Via :beer: [Homebrew Cask](//brew.sh)
 
 ```powershell
-brew cask install dafuqtor/tap/2fatotray
+brew install dafuqtor/tap/2fatotray --cask
 ```
 
 ### Direct Download · **[Latest Release](//github.com/DaFuqtor/2FAtoTray/releases/latest/download/2FAtoTray.zip) ([![GitHub release](https://img.shields.io/github/release/dafuqtor/2fatotray?label=%20&color=gray)](//github.com/DaFuqtor/2FAtoTray/releases))**
