@@ -33,17 +33,17 @@
 <br>
 <br>
 
-<a href="//github.com/DaFuqtor/2FAtoTray/releases"><img align="right" alt="GitHub All Releases" src="https://img.shields.io/github/downloads/dafuqtor/2fatotray/total?color=teal"></a>
+<a href="//github.com/artginzburg/2FAtoTray/releases"><img align="right" alt="GitHub All Releases" src="https://img.shields.io/github/downloads/artginzburg/2fatotray/total?color=teal"></a>
 
 ## Install
 
 ### Via :beer: [Homebrew Cask](//brew.sh)
 
 ```powershell
-brew install dafuqtor/tap/2fatotray --cask
+brew install --cask artginzburg/tap/2fatotray
 ```
 
-### Direct Download · **[Latest Release](//github.com/DaFuqtor/2FAtoTray/releases/latest/download/2FAtoTray.zip) ([![GitHub release](https://img.shields.io/github/release/dafuqtor/2fatotray?label=%20&color=gray)](//github.com/DaFuqtor/2FAtoTray/releases))**
+### Direct Download · **[Latest Release](//github.com/artginzburg/2FAtoTray/releases/latest/download/2FAtoTray.zip) ([![GitHub release](https://img.shields.io/github/release/artginzburg/2fatotray?label=%20&color=gray)](//github.com/artginzburg/2FAtoTray/releases))**
 
 *Requires macOS<sup>10.14</sup> or later.*
 
@@ -83,4 +83,4 @@ brew install dafuqtor/tap/2fatotray --cask
 
 ### Contribute
 
-> Use the [Issues](//github.com/Dafuqtor/2FAtoTray/issues) page to suggest your ideas or special needs :)
+> Use the [Issues](//github.com/artginzburg/2FAtoTray/issues) page to suggest your ideas or special needs :)
